@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="113">
+    <author>Toneslin</author>
+    <version>1.6.7.1</version>
+    <title>
+        <en>AutoDrive Route Builder</en>
+        <de>AutoDrive Strecken-Baukasten</de>
+    </title>
+    <description>
+        <en><![CDATA[Add-on for AutoDrive. Builds reverse bays, free curves, arcs between guide lines and branches from parameters and places them freely with the mouse. Open with LCtrl + LAlt + B, place directly with LCtrl + LAlt + P, undo the last route with LCtrl + LAlt + Z, remove guide lines with LCtrl + LAlt + L. Mouse wheel = camera zoom, LShift / LCtrl / LAlt + wheel = rotate / radius / points, hold middle mouse button or Num/ = look around. Requires FS25_AutoDrive.]]></en>
+        <de><![CDATA[Zusatz für AutoDrive. Baut Rückfahr-Buchten (Zufahrtskurve, Weiterfahrt, rückwärts ins Ziel, Abfahrtskurve), freie Kurven, Bögen zwischen Hilfslinien und Verzweigungen aus Parametern und platziert sie frei mit der Maus. Öffnen mit LStrg + LAlt + B, direkt platzieren mit LStrg + LAlt + P, letzte Strecke rückgängig mit LStrg + LAlt + Z, Hilfslinien entfernen mit LStrg + LAlt + L.
+
+Platzieren: Maus = Position, Mausrad = Kamera zoomen, LUmschalt + Mausrad = drehen, LStrg + Mausrad = Radius, LAlt + Mausrad = Punkte, mittlere Maustaste halten oder Num/ = frei umsehen, linke Maustaste = bauen, kurzer Rechtsklick = AutoDrive bearbeiten, Ende = beenden.
+Die Anbindung an das bestehende Netz erfolgt von Hand im AutoDrive-Editor.]]></de>
+    </description>
+    <iconFilename>icon_routeBuilder.dds</iconFilename>
+    <multiplayer supported="true"/>
+
+    <dependencies>
+        <dependency>FS25_AutoDrive</dependency>
+    </dependencies>
+
+    <extraSourceFiles>
+        <sourceFile filename="scripts/RouteBuilderEvent.lua"/>
+        <sourceFile filename="scripts/RouteBuilderGui.lua"/>
+        <sourceFile filename="scripts/RouteBuilder.lua"/>
+        <sourceFile filename="scripts/RouteBuilderSelect.lua"/>
+    </extraSourceFiles>
+
+    <actions>
+        <action name="ADRB_OPEN" category="ONFOOT VEHICLE" axisType="HALF"/>
+        <action name="ADRB_UNDO" category="ONFOOT VEHICLE" axisType="HALF"/>
+        <action name="ADRB_PLACE" category="ONFOOT VEHICLE" axisType="HALF"/>
+        <action name="ADRB_CLEAR_GUIDES" category="ONFOOT VEHICLE" axisType="HALF"/>
+    </actions>
+
+    <inputBinding>
+        <actionBinding action="ADRB_OPEN">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_b"/>
+        </actionBinding>
+        <actionBinding action="ADRB_UNDO">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_z"/>
+        </actionBinding>
+        <actionBinding action="ADRB_PLACE">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_p"/>
+        </actionBinding>
+        <actionBinding action="ADRB_CLEAR_GUIDES">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_l"/>
+        </actionBinding>
+    </inputBinding>
+
+    <l10n>
+        <text name="input_ADRB_UNDO"><en>AD Route Builder: undo last route</en><de>AD Strecken-Baukasten: letzte Strecke rückgängig</de></text>
+        <text name="input_ADRB_CLEAR_GUIDES"><en>AD Route Builder: remove guide lines</en><de>AD Strecken-Baukasten: Hilfslinien entfernen</de></text>
+        <text name="input_ADRB_PLACE"><en>AD Route Builder: place with last values</en><de>AD Strecken-Baukasten: mit letzten Werten platzieren</de></text>
+        <text name="input_ADRB_OPEN"><en>AD Route Builder: open</en><de>AD Strecken-Baukasten: öffnen</de></text>
+
+        <text name="adrb_title"><en>AutoDrive Route Builder</en><de>AutoDrive Strecken-Baukasten</de></text>
+        <text name="adrb_name"><en>Target name</en><de>Zielname</de></text>
+        <text name="adrb_startNumber"><en>Start number</en><de>Startnummer</de></text>
+        <text name="adrb_count"><en>Number of bays</en><de>Anzahl Buchten</de></text>
+        <text name="adrb_spacing"><en>Bay distance (m)</en><de>Abstand Buchten (m)</de></text>
+        <text name="adrb_lengthTarget"><en>Target to approach (m)</en><de>Ziel bis Zufahrt (m)</de></text>
+        <text name="adrb_totalLength"><en>Total length (m)</en><de>Gesamtlänge (m)</de></text>
+        <text name="adrb_exitAt"><en>Exit from target (m)</en><de>Abfahrt ab Ziel (m)</de></text>
+        <text name="adrb_pointSpacing"><en>Point spacing (m)</en><de>Punktabstand (m)</de></text>
+        <text name="adrb_approachSide"><en>Approach side</en><de>Zufahrt Seite</de></text>
+        <text name="adrb_approachAngle"><en>Approach angle</en><de>Zufahrt Winkel</de></text>
+        <text name="adrb_approachRadius"><en>Approach radius</en><de>Zufahrt Radius</de></text>
+        <text name="adrb_exitSide"><en>Exit side</en><de>Abfahrt Seite</de></text>
+        <text name="adrb_exitAngle"><en>Exit angle</en><de>Abfahrt Winkel</de></text>
+        <text name="adrb_exitRadius"><en>Exit radius</en><de>Abfahrt Radius</de></text>
+        <text name="adrb_curvePoints"><en>Points per curve</en><de>Punkte je Kurve</de></text>
+        <text name="adrb_endLength"><en>Turning piece (m)</en><de>Wendestück (m)</de></text>
+        <text name="adrb_buildType"><en>Type</en><de>Bauart</de></text>
+        <text name="adrb_exitPoints"><en>Exit points</en><de>Abfahrt Punkte</de></text>
+        <text name="adrb_turnOffset"><en>Turning point beside reverse line (m)</en><de>Wendepunkt neben Rückfahrlinie (m)</de></text>
+        <text name="adrb_sectionBay"><en>Reverse bay</en><de>Rückfahr-Bucht</de></text>
+        <text name="adrb_sectionCurve"><en>Free curve</en><de>Freie Kurve</de></text>
+        <text name="adrb_guideSet"><en>Guide line set (%d)</en><de>Hilfslinie gesetzt (%d)</de></text>
+        <text name="adrb_guidesCleared"><en>Guide lines removed</en><de>Hilfslinien entfernt</de></text>
+        <text name="adrb_liveGuide"><en>Guide line: length %d m each side</en><de>Hilfslinie: Länge %d m je Seite</de></text>
+        <text name="adrb_curve"><en>Curve</en><de>Kurve</de></text>
+        <text name="adrb_points"><en>Points</en><de>Punkte</de></text>
+        <text name="adrb_conn"><en>Connection V/B/R</en><de>Verbindung V/B/R</de></text>
+        <text name="adrb_curveSide"><en>Curve side</en><de>Kurve Seite</de></text>
+        <text name="adrb_curveAngle"><en>Curve angle</en><de>Kurve Winkel</de></text>
+        <text name="adrb_curveRadius"><en>Curve radius</en><de>Kurve Radius</de></text>
+        <text name="adrb_curveCount"><en>Curve points</en><de>Kurve Punkte</de></text>
+        <text name="adrb_curveConnection"><en>Curve connection</en><de>Kurve Verbindung</de></text>
+        <text name="adrb_approach"><en>Approach</en><de>Zufahrt</de></text>
+        <text name="adrb_exit"><en>Exit</en><de>Abfahrt</de></text>
+        <text name="adrb_side"><en>Side</en><de>Seite</de></text>
+        <text name="adrb_angle"><en>Angle °</en><de>Winkel °</de></text>
+        <text name="adrb_radius"><en>Radius m</en><de>Radius m</de></text>
+        <text name="adrb_hint"><en>Click into a field to edit (Backspace deletes). Guide line = only for you. Arc = tangent to the last two guide lines (mouse chooses corner and size). Connection V = forward, B = both ways, R = reverse. Never let a road continue from the point where reversing starts - always from the point before. Undo: LCtrl + LAlt + Z. Remove guides: LCtrl + LAlt + L.</en><de>Zum Ändern ins Feld klicken (Rücktaste löscht). Hilfslinie = nur für dich sichtbar. Bogen = tangential zu den letzten zwei Hilfslinien (Maus wählt Ecke und Größe). Verbindung V = vorwärts, B = beidseitig, R = rückwärts. Weiterfahrt nie vom Punkt abzweigen lassen, an dem das Rückwärtsfahren beginnt - immer vom Punkt davor. Rückgängig: LStrg + LAlt + Z. Hilfslinien entfernen: LStrg + LAlt + L.</de></text>
+        <text name="adrb_place"><en>Place</en><de>Platzieren</de></text>
+        <text name="adrb_undo"><en>Undo last</en><de>Letzte rückgängig</de></text>
+
+        <text name="adrb_help1"><en>Route Builder: mouse = position, wheel = camera zoom, LShift + wheel or , / . = rotate</en><de>Strecken-Baukasten: Maus = Position, Mausrad = Kamera zoomen, LUmschalt + Mausrad oder , / . = drehen</de></text>
+        <text name="adrb_help3"><en>LCtrl + wheel = radius (LCtrl + LShift = 0.1 m), LAlt + wheel = points, H = helper lines, hold middle mouse button or Num/ = look around</en><de>LStrg + Mausrad = Radius (LStrg + LUmschalt = 0,1 m), LAlt + Mausrad = Punkte, H = Hilfslinien, mittlere Maustaste halten oder Num/ = frei umsehen</de></text>
+        <text name="adrb_liveCurve"><en>Curve: radius %s m, %d points</en><de>Kurve: Radius %s m, %d Punkte</de></text>
+        <text name="adrb_liveBay"><en>Approach: radius %s m, %d points - Exit: radius %s m, %d points</en><de>Zufahrt: Radius %s m, %d Punkte - Abfahrt: Radius %s m, %d Punkte</de></text>
+        <text name="adrb_help4"><en>Fine: LShift + LAlt + wheel = turn 0.1 deg (+ LCtrl 0.01), Num8/2/4/6 = move 0.1 m (LShift 0.01), Num5 = lock position, Num0 = snap to AD point, Num3 = direction, Num, = connection type</en><de>Fein: LUmschalt + LAlt + Mausrad = fein drehen 0,1 Grad (+ LStrg 0,01), Num8/2/4/6 = verschieben 0,1 m (LUmschalt 0,01), Num5 = Position festhalten, Num0 = an AD-Punkt ausrichten, Num3 = Richtung, Num, = Verbindungsart</de></text>
+        <text name="adrb_liveAngle"><en>Angle %.2f deg</en><de>Winkel %.2f Grad</de></text>
+        <text name="adrb_liveLocked"><en>position locked</en><de>Position fest</de></text>
+        <text name="adrb_noSnap"><en>No AutoDrive point within 10 m</en><de>Kein AutoDrive-Punkt im Umkreis von 10 m</de></text>
+        <text name="adrb_liveGuideAngle"><en>angle to last guide %.2f deg</en><de>Winkel zur letzten Hilfslinie %.2f Grad</de></text>
+        <text name="adrb_liveArc"><en>Arc: radius %s m, tangent %s m, angle %.1f deg, %d points</en><de>Bogen: Radius %s m, Tangente %s m, Winkel %.1f Grad, %d Punkte</de></text>
+        <text name="adrb_arcDir12"><en>direction line 1 -> 2 (Num3 = swap)</en><de>Richtung Linie 1 -> 2 (Num3 = umdrehen)</de></text>
+        <text name="adrb_arcDir21"><en>direction line 2 -> 1 (Num3 = swap)</en><de>Richtung Linie 2 -> 1 (Num3 = umdrehen)</de></text>
+        <text name="adrb_arcNeedGuides"><en>Arc: set two guide lines first (Build = L)</en><de>Bogen: zuerst zwei Hilfslinien setzen (Bauen = L)</de></text>
+        <text name="adrb_arcParallel"><en>Arc: the two guide lines are parallel</en><de>Bogen: die beiden Hilfslinien sind parallel</de></text>
+        <text name="adrb_arcTooSmall"><en>Arc: move the mouse further away from the intersection</en><de>Bogen: Maus weiter weg vom Schnittpunkt bewegen</de></text>
+        <text name="adrb_typeS"><en>Reverse bay</en><de>Rückfahr-Bucht</de></text>
+        <text name="adrb_typeK"><en>Curve</en><de>Kurve</de></text>
+        <text name="adrb_typeL"><en>Guide line</en><de>Hilfslinie</de></text>
+        <text name="adrb_typeB"><en>Arc</en><de>Bogen</de></text>
+        <text name="adrb_conForward"><en>one-way (Num, = change)</en><de>Einbahn (Num, = wechseln)</de></text>
+        <text name="adrb_conDual"><en>both ways (Num, = change)</en><de>beidseitig (Num, = wechseln)</de></text>
+        <text name="adrb_conReverse"><en>reverse (Num, = change)</en><de>rückwärts (Num, = wechseln)</de></text>
+        <text name="adrb_curveDirFwd"><en>direction start -> end (Num3 = swap)</en><de>Richtung Start -> Ende (Num3 = umdrehen)</de></text>
+        <text name="adrb_curveDirBack"><en>direction end -> start (Num3 = swap)</en><de>Richtung Ende -> Start (Num3 = umdrehen)</de></text>
+        <text name="adrb_help2"><en>Num1 = change type (LShift = back) - left mouse button = build (stays active), short right click = edit AutoDrive, End = finish</en><de>Num1 = Bauart wechseln (LUmschalt = zurück) - linke Maustaste = bauen (bleibt aktiv), kurzer Rechtsklick = AutoDrive bearbeiten, Ende = beenden</de></text>
+        <text name="adrb_built"><en>Route built: %d waypoints, %d targets</en><de>Strecke gebaut: %d Wegpunkte, %d Ziele</de></text>
+        <text name="adrb_undone"><en>Last route removed</en><de>Letzte Strecke entfernt</de></text>
+        <text name="adrb_undoNotPossible"><en>Undo not possible (network changed since then)</en><de>Rückgängig nicht möglich (Netz wurde inzwischen geändert)</de></text>
+        <text name="adrb_invalid"><en>Invalid input: %s</en><de>Ungültige Eingabe: %s</de></text>
+        <text name="adrb_noAD"><en>AutoDrive is not loaded</en><de>AutoDrive ist nicht geladen</de></text>
+        <text name="adrb_sectionBranch"><en>Branch</en><de>Verzweigung</de></text>
+        <text name="adrb_branchIn"><en>Feed line (m)</en><de>Zulauf (m)</de></text>
+        <text name="adrb_branchStraight"><en>Straight on after the last branch (m, 0 = none)</en><de>Gerade weiter nach letztem Abzweig (m, 0 = keine)</de></text>
+        <text name="adrb_branchOut"><en>Run-out after curve (m)</en><de>Auslauf nach Kurve (m)</de></text>
+        <text name="adrb_branchPoints"><en>Points per curve</en><de>Punkte je Kurve</de></text>
+        <text name="adrb_branchLeft"><en>Branch left</en><de>Abzweig links</de></text>
+        <text name="adrb_branchRight"><en>right</en><de>rechts</de></text>
+        <text name="adrb_branchLeftAngle"><en>Branch left angle (0 = none)</en><de>Abzweig links Winkel (0 = keiner)</de></text>
+        <text name="adrb_branchLeftRadius"><en>Branch left radius</en><de>Abzweig links Radius</de></text>
+        <text name="adrb_branchRightAngle"><en>Branch right angle (0 = none)</en><de>Abzweig rechts Winkel (0 = keiner)</de></text>
+        <text name="adrb_branchRightRadius"><en>Branch right radius</en><de>Abzweig rechts Radius</de></text>
+        <text name="adrb_branchMode"><en>Direction A = branch off, E = merge in</en><de>Richtung A = Abzweig, E = Einmündung</de></text>
+        <text name="adrb_branchConnection"><en>Connection V = one-way, B = both ways</en><de>Verbindung V = Einbahn, B = beidseitig</de></text>
+        <text name="adrb_branchNothing"><en>Branch: set at least one angle or "straight on"</en><de>Verzweigung: mindestens einen Winkel oder "Gerade weiter" angeben</de></text>
+        <text name="adrb_branchDirA"><en>branch off (Num3 = merge)</en><de>Abzweig (Num3 = Einmündung)</de></text>
+        <text name="adrb_branchDirE"><en>merge in (Num3 = branch off)</en><de>Einmündung (Num3 = Abzweig)</de></text>
+        <text name="adrb_liveBranch"><en>Branch: left radius %s m, right radius %s m, %d points</en><de>Verzweigung: Radius links %s m, rechts %s m, %d Punkte</de></text>
+        <text name="adrb_typeY"><en>Branch</en><de>Verzweigung</de></text>
+        <text name="adrb_typeSLong"><en>Reverse bay</en><de>Rückfahr-Bucht</de></text>
+        <text name="adrb_typeKLong"><en>Free curve</en><de>Freie Kurve</de></text>
+        <text name="adrb_typeLLong"><en>Guide line / cross</en><de>Hilfslinie / Kreuz</de></text>
+        <text name="adrb_typeBLong"><en>Arc between guide lines</en><de>Bogen zwischen Hilfslinien</de></text>
+        <text name="adrb_typeYLong"><en>Branch</en><de>Verzweigung</de></text>
+        <text name="adrb_sectionArc"><en>Arc between the last two guide lines</en><de>Bogen zwischen den letzten zwei Hilfslinien</de></text>
+        <text name="adrb_guideInfo"><en>No settings needed - the length is set while placing (LCtrl + wheel).</en><de>Keine Einstellungen nötig - die Länge stellst du beim Platzieren ein (LStrg + Mausrad).</de></text>
+        <text name="adrb_hintS"><en>Click into a field to edit (Backspace deletes). Name + start number give the target names (e.g. P 1, P 2, ...). Never let a road continue from the point where reversing starts - always from the point before. Undo: LCtrl + LAlt + Z. Remove guide lines: LCtrl + LAlt + L.</en><de>Zum Ändern ins Feld klicken (Rücktaste löscht). Zielname + Startnummer ergeben die AD-Ziele (z. B. P 1, P 2, ...). Weiterfahrt nie vom Punkt abzweigen lassen, an dem das Rückwärtsfahren beginnt - immer vom Punkt davor. Rückgängig: LStrg + LAlt + Z. Hilfslinien entfernen: LStrg + LAlt + L.</de></text>
+        <text name="adrb_hintK"><en>Curve starts at the mouse position in the set direction. Side L/R, angle, radius, points. Connection V = forward, B = both ways, R = reverse. Num3 = swap direction. Undo: LCtrl + LAlt + Z. Remove guide lines: LCtrl + LAlt + L.</en><de>Die Kurve beginnt an der Mausposition in Drehrichtung. Seite L/R, Winkel, Radius, Punkte. Verbindung V = vorwärts, B = beidseitig, R = rückwärts. Num3 = Richtung umdrehen. Rückgängig: LStrg + LAlt + Z. Hilfslinien entfernen: LStrg + LAlt + L.</de></text>
+        <text name="adrb_hintB"><en>First set two guide lines (type Guide line). The arc touches both lines; the mouse chooses corner and size, LCtrl + wheel = radius. Connection V/B/R, Num3 = swap direction. Undo: LCtrl + LAlt + Z. Remove guide lines: LCtrl + LAlt + L.</en><de>Zuerst zwei Hilfslinien setzen (Bauart Hilfslinie). Der Bogen berührt beide Linien; die Maus wählt Ecke und Größe, LStrg + Mausrad = Radius. Verbindung V/B/R, Num3 = Richtung umdrehen. Rückgängig: LStrg + LAlt + Z. Hilfslinien entfernen: LStrg + LAlt + L.</de></text>
+        <text name="adrb_hintL"><en>Guide lines are only visible for you and are not built in AutoDrive. Undo: LCtrl + LAlt + Z. Remove guide lines: LCtrl + LAlt + L.</en><de>Hilfslinien sieht nur du, sie werden nicht in AutoDrive gebaut. Rückgängig: LStrg + LAlt + Z. Hilfslinien entfernen: LStrg + LAlt + L.</de></text>
+        <text name="adrb_hintY"><en>Angle 0 = no branch on that side. While placing: LCtrl + wheel = both radii, LAlt + wheel = points, Num3 = branch off / merge in, Num, = one-way / both ways, Num0 = snap the branch point to an AD point. Undo: LCtrl + LAlt + Z. Remove guide lines: LCtrl + LAlt + L.</en><de>Winkel 0 = kein Abzweig auf dieser Seite. Beim Platzieren: LStrg + Mausrad = beide Radien, LAlt + Mausrad = Punkte, Num3 = Abzweig / Einmündung, Num, = Einbahn / beidseitig, Num0 = Verzweigungspunkt auf AD-Punkt setzen. Rückgängig: LStrg + LAlt + Z. Hilfslinien entfernen: LStrg + LAlt + L.</de></text>
+        <text name="adrb_branchAt"><en>starts after branch point (m)</en><de>beginnt nach Verzweigungspunkt (m)</de></text>
+        <text name="adrb_branchRightLong"><en>Branch right</en><de>Abzweig rechts</de></text>
+        <text name="adrb_branchLeftAt"><en>Branch left position</en><de>Abzweig links Position</de></text>
+        <text name="adrb_branchRightAt"><en>Branch right position</en><de>Abzweig rechts Position</de></text>
+        <text name="adrb_optRight"><en>right</en><de>rechts</de></text>
+        <text name="adrb_optLeft"><en>left</en><de>links</de></text>
+        <text name="adrb_optNoneApproach"><en>no approach curve</en><de>keine Zufahrtskurve</de></text>
+        <text name="adrb_optNoneExit"><en>no exit curve</en><de>keine Abfahrtskurve</de></text>
+        <text name="adrb_optForward"><en>forward (one-way)</en><de>vorwärts (Einbahn)</de></text>
+        <text name="adrb_optDual"><en>both ways</en><de>beidseitig</de></text>
+        <text name="adrb_optReverse"><en>reverse</en><de>rückwärts</de></text>
+        <text name="adrb_optBranchOff"><en>branch off (feed -> branches)</en><de>Abzweig (Zulauf -> Abzweige)</de></text>
+        <text name="adrb_optMerge"><en>merge in (branches -> feed)</en><de>Einmündung (Abzweige -> Zulauf)</de></text>
+        <text name="adrb_optOneWay"><en>one-way</en><de>Einbahn</de></text>
+        <text name="adrb_connection"><en>Connection</en><de>Verbindung</de></text>
+        <text name="adrb_direction"><en>Direction</en><de>Richtung</de></text>
+        <text name="adrb_sectionGuide"><en>Guide line / cross</en><de>Hilfslinie / Kreuz</de></text>
+        <text name="adrb_helpTitle"><en>How it works</en><de>So geht's</de></text>
+        <text name="adrb_liveAnchor"><en>start on AD point %d (gets connected) - rotate around it</en><de>Start auf AD-Punkt %d (wird verbunden) - darum drehen</de></text>
+        <text name="adrb_liveAnchorMoved"><en>start moved away from the AD point (not connected)</en><de>Start vom AD-Punkt weggeschoben (wird nicht verbunden)</de></text>
+        <text name="adrb_typeZ"><en>Merge</en><de>Zuführung</de></text>
+        <text name="adrb_typeZLong"><en>Merge (lines from left / right join into one)</en><de>Zuführung (von links / rechts auf eine Linie)</de></text>
+        <text name="adrb_typeG"><en>Straight on guide</en><de>Gerade auf Hilfslinie</de></text>
+        <text name="adrb_typeGLong"><en>Straight line on a guide line (2 clicks)</en><de>Gerade auf Hilfslinie (2 Klicks)</de></text>
+        <text name="adrb_sectionMerge"><en>Merge</en><de>Zuführung</de></text>
+        <text name="adrb_mergeOut"><en>Outgoing line (m)</en><de>Ablauf (m)</de></text>
+        <text name="adrb_mergeStraight"><en>Straight line before the first join (m, 0 = none)</en><de>Gerade vor der ersten Einmündung (m, 0 = keine)</de></text>
+        <text name="adrb_mergeIn"><en>Run-in before curve (m)</en><de>Zulauf vor Kurve (m)</de></text>
+        <text name="adrb_mergeAt"><en>joins before merge point (m)</en><de>mündet vor Zusammenführung (m)</de></text>
+        <text name="adrb_sectionLine"><en>Straight line on a guide line</en><de>Gerade auf Hilfslinie</de></text>
+        <text name="adrb_lineSpacing"><en>max. point spacing (m)</en><de>max. Punktabstand (m)</de></text>
+        <text name="adrb_lineConnection"><en>Connection (line)</en><de>Verbindung (Gerade)</de></text>
+        <text name="adrb_lineInfo"><en>1st click near a guide line = start, 2nd click = end. Points are spread evenly.</en><de>1. Klick nahe einer Hilfslinie = Start, 2. Klick = Ende. Punkte gleichmäßig verteilt.</de></text>
+        <text name="adrb_lineNeedGuide"><en>Set a guide line first (type guide line)</en><de>Zuerst eine Hilfslinie setzen (Bauart Hilfslinie)</de></text>
+        <text name="adrb_lineTooFar"><en>Move the mouse closer to a guide line (max. 15 m)</en><de>Maus näher an eine Hilfslinie (max. 15 m)</de></text>
+        <text name="adrb_lineClickStart"><en>Left click = start on the guide line</en><de>Linksklick = Start auf der Hilfslinie</de></text>
+        <text name="adrb_lineClickEnd"><en>Left click = end</en><de>Linksklick = Ende</de></text>
+        <text name="adrb_liveLine"><en>length %.1f m, %d points, spacing %.2f m</en><de>Länge %.1f m, %d Punkte, Abstand %.2f m</de></text>
+        <text name="adrb_liveLineMax"><en>max. %s m</en><de>max. %s m</de></text>
+        <text name="adrb_alignNone"><en>Alignment: the guide line does not fit this side (parallel to the main line, or with Num0 point the line would get shorter than 0)</en><de>Ausrichtung: Hilfslinie passt nicht zu dieser Seite (parallel zur Hauptlinie, oder mit Num0-Punkt wäre die Gerade kürzer als 0)</de></text>
+        <text name="adrb_liveAlign"><en>tangent to guide %s: %s %.1f deg</en><de>tangential an Hilfslinie %s: %s %.1f Grad</de></text>
+        <text name="adrb_liveAlignIn"><en>, feed line %.1f m</en><de>, Zulauf %.1f m</de></text>
+        <text name="adrb_liveAlignOut"><en>, outgoing line %.1f m</en><de>, Ablauf %.1f m</de></text>
+        <text name="adrb_guideNoneNear"><en>No guide line near the mouse (max. 15 m)</en><de>Keine Hilfslinie bei der Maus (max. 15 m)</de></text>
+        <text name="adrb_guideRemoved"><en>Guide line %d removed (%d left) - LShift + Del brings it back</en><de>Hilfslinie %d entfernt (noch %d) - LUmschalt + Entf holt sie zurück</de></text>
+        <text name="adrb_guideRestored"><en>Guide line %d is back</en><de>Hilfslinie %d ist wieder da</de></text>
+        <text name="adrb_deleteAsk"><en>Delete %d points? Press Del again within 3 s (cannot be undone)</en><de>%d Punkte löschen? Innerhalb 3 s nochmal Entf drücken (nicht rückgängig zu machen)</de></text>
+        <text name="adrb_deleteAskMarkers"><en>- %d targets are deleted too!</en><de>- %d Ziele werden mit gelöscht!</de></text>
+        <text name="adrb_deleted"><en>%d AutoDrive points deleted</en><de>%d AutoDrive-Punkte gelöscht</de></text>
+        <text name="adrb_liveCopy"><en>copy of %d points: offset %.2f m, rotated %.1f deg - left click = paste, Num0 = done</en><de>Kopie von %d Punkten: Versatz %.2f m, gedreht %.1f Grad - Linksklick = einfügen, Num0 = fertig</de></text>
+        <text name="adrb_copyNothing"><en>Select points first (drag a box)</en><de>Erst Punkte auswählen (Kasten aufziehen)</de></text>
+        <text name="adrb_pasted"><en>%d points pasted (LCtrl + LAlt + Z = undo)</en><de>%d Punkte eingefügt (LStrg + LAlt + Z = rückgängig)</de></text>
+        <text name="adrb_liveAlign2"><en>, 2nd guide %s: %s %.1f deg, starts at %.1f m</en><de>, 2. Hilfslinie %s: %s %.1f Grad, beginnt bei %.1f m</de></text>
+        <text name="adrb_alignSecondNone"><en>, 2nd guide line does not fit the other side (it would have to start before the branch point)</en><de>, 2. Hilfslinie passt nicht zur anderen Seite (sie müsste vor dem Verzweigungspunkt beginnen)</de></text>
+        <text name="adrb_targetCross"><en>%d (cross line)</en><de>%d (Querlinie)</de></text>
+        <text name="adrb_alignButton"><en>Mouse button for aligning to guide lines (with LCtrl), no.</en><de>Maustaste zum Ausrichten an Hilfslinien (mit LStrg), Nr.</de></text>
+        <text name="adrb_alignButtonHint"><en>or just LCtrl + side button while placing</en><de>oder einfach LStrg + Seitentaste beim Platzieren</de></text>
+        <text name="adrb_alignPickGuide"><en>%s chosen: now LCtrl + mouse button %d on the guide line (no line there = this side off)</en><de>%s gewählt: jetzt LStrg + Maustaste %d auf die Hilfslinie (keine Linie dort = diese Seite aus)</de></text>
+        <text name="adrb_alignLearn"><en>Press the mouse button for aligning now (not left / right / wheel)</en><de>Jetzt die Maustaste zum Ausrichten drücken (nicht links / rechts / Rad)</de></text>
+        <text name="adrb_alignLearnBad"><en>Mouse button %d is already used by the route builder, take another one</en><de>Maustaste %d ist schon belegt, bitte eine andere nehmen</de></text>
+        <text name="adrb_alignLearned"><en>Aligning to guide lines: LCtrl + mouse button %d</en><de>Ausrichten an Hilfslinien: LStrg + Maustaste %d</de></text>
+        <text name="adrb_alignNoLeft"><en>No branch on the left (angle 0)</en><de>Links gibt es keinen Abzweig (Winkel 0)</de></text>
+        <text name="adrb_alignNoRight"><en>No branch on the right (angle 0)</en><de>Rechts gibt es keinen Abzweig (Winkel 0)</de></text>
+        <text name="adrb_alignOffLeft"><en>Left side: alignment off</en><de>Linke Seite: Ausrichtung aus</de></text>
+        <text name="adrb_alignOffRight"><en>Right side: alignment off</en><de>Rechte Seite: Ausrichtung aus</de></text>
+        <text name="adrb_armRemoved"><en>%s branch removed (LAlt + left click there again = back)</en><de>Abzweig %s entfernt (nochmal LAlt + Linksklick dort = zurück)</de></text>
+        <text name="adrb_armBack"><en>%s branch is back</en><de>Abzweig %s ist wieder da</de></text>
+        <text name="adrb_armLast"><en>This is the last branch and there is no straight line - nothing would be left</en><de>Das ist der letzte Abzweig und es gibt keine Gerade weiter - es bliebe nichts übrig</de></text>
+        <text name="adrb_typeMenuTitle"><en>Build type</en><de>Bauart</de></text>
+        <text name="adrb_typeMenuHint"><en>Number key (top row or numpad) or click = choose   |   Esc = close</en><de>Zahl (oben oder Ziffernblock) oder Klick = wählen   |   Esc = schließen</de></text>
+        <text name="adrb_typeM"><en>Select / move</en><de>Auswählen / Verschieben</de></text>
+        <text name="adrb_typeMLong"><en>Select and move AD points</en><de>AD-Punkte auswählen und verschieben</de></text>
+        <text name="adrb_sectionMove"><en>Select and move AutoDrive points</en><de>AutoDrive-Punkte auswählen und verschieben</de></text>
+        <text name="adrb_moveInfo"><en>No settings needed - select with a box or by clicking, then drag (see help on the right).</en><de>Keine Einstellungen nötig - mit Kasten oder Klick auswählen, dann ziehen (siehe Hilfe rechts).</de></text>
+        <text name="adrb_moveFree"><en>move freely (Num3 = change)</en><de>frei verschieben (Num3 = wechseln)</de></text>
+        <text name="adrb_moveAlong"><en>move along the chosen guide line (Num3 = change)</en><de>entlang der gewählten Hilfslinie (Num3 = wechseln)</de></text>
+        <text name="adrb_moveAcross"><en>move across the chosen guide line (Num3 = change)</en><de>quer zur gewählten Hilfslinie (Num3 = wechseln)</de></text>
+        <text name="adrb_liveSelect"><en>%d points selected</en><de>%d Punkte ausgewählt</de></text>
+        <text name="adrb_liveMove"><en>moving %.2f m</en><de>Verschiebung %.2f m</de></text>
+        <text name="adrb_moveNeedGuide"><en>Set a guide line first (type guide line) - until then the move is free</en><de>Zuerst eine Hilfslinie setzen (Bauart Hilfslinie) - bis dahin wird frei verschoben</de></text>
+        <text name="adrb_moveUndone"><en>Last move undone</en><de>Letzte Verschiebung rückgängig gemacht</de></text>
+        <text name="adrb_rotateFree"><en>Top view: camera turns with the mouse (Home = only with Space)</en><de>Draufsicht: Kamera dreht mit der Maus (Pos1 = nur mit Leertaste)</de></text>
+        <text name="adrb_rotateLocked"><en>Top view: camera turns only while Space is held (Home = free)</en><de>Draufsicht: Kamera dreht nur mit gehaltener Leertaste (Pos1 = frei)</de></text>
+    </l10n>
+</modDesc>
