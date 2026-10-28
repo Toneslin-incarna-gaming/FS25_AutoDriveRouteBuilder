@@ -4,7 +4,19 @@
 
 **Deutsch** | [English](README.en.md)
 
+[![Spenden mit PayPal](https://img.shields.io/badge/Spenden-PayPal-0070ba?logo=paypal&logoColor=white)](https://paypal.me/toneslin)
+
 Baut AutoDrive-Strecken aus Einstellungen und platziert sie mit der Maus – statt jeden Wegpunkt einzeln zu setzen. Die Punkte werden mit AutoDrives eigenen Funktionen angelegt und im Mehrspieler an alle verteilt.
+
+## So sieht's aus
+
+**Buchten automatisch ins Fahrsilo setzen** – Maus ins Silo, Num9, fertig:
+
+![Num9 im Fahrsilo](docs/images/silo_fit_de.png)
+
+**Zufahrt an eine Hilfslinie anlegen** – der Radius bleibt, der Anschluss an die Bucht wird berechnet:
+
+![Zufahrt an Hilfslinie](docs/images/bay_align_de.png)
 
 ## Voraussetzungen
 
@@ -32,12 +44,13 @@ Ebenfalls von mir: [AutoDrive Aufträge (FS25_AutoDriveJobs)](https://github.com
 - [AutoDrive-Punkte auswählen, verschieben, kopieren, löschen](#autodrive-punkte-auswählen-verschieben-kopieren-löschen)
 - [Draufsicht und AutoDrive bearbeiten](#draufsicht-und-autodrive-bearbeiten)
 - [Gut zu wissen](#gut-zu-wissen)
+- [Unterstützen](#unterstützen)
 
 ## Start
 
-1. **LStrg + LAlt + B** öffnet das Einstellungsfenster.
-2. Oben die **Bauart** wählen. Es erscheinen nur die Einstellungen dieser Bauart, rechts eine Erklärung, unten ein Schaubild.
-3. **Platzieren** – die Strecke hängt als Vorschau an der Maus.
+1. **LStrg + LAlt + B** startet den Baukasten – in der Draufsicht und mit der Bauart **Hilfslinie**.
+2. **Num1** öffnet das Bauart-Menü, eine Zahl oder ein Klick wählt die Bauart.
+3. Nochmal **LStrg + LAlt + B** öffnet die **Einstellungen der Bauart, die du gerade benutzt** (rechts eine Erklärung, unten ein Schaubild). „Platzieren“ oder „Zurück“ führt an dieselbe Stelle zurück.
 4. **Linksklick** baut. Der Baukasten bleibt aktiv, du kannst gleich weiterbauen.
 5. **Ende** beendet den Baukasten.
 
@@ -56,7 +69,7 @@ Mit **Num1** öffnet sich beim Platzieren ein Menü mit allen Bauarten – Zahl 
 | 3 | **Hilfslinie / Kreuz** | Eine Linie mit Querlinie und Lineal zum Ausrichten. Nur du siehst sie, AutoDrive baut nichts. |
 | 4 | **Gerade auf Hilfslinie** | 1. Klick = Start, 2. Klick = Ende, beide werden auf die Hilfslinie gesetzt. Die Punkte werden gleichmäßig verteilt (Abstand höchstens „max. Punktabstand“). |
 | 5 | **Bogen** | Ein Bogen, der die letzten zwei Hilfslinien berührt. Die Maus wählt Ecke und Größe. |
-| 6 | **Verzweigung** | Zulauf, Abzweige nach links und/oder rechts (jeder mit eigenem Winkel, Radius und Beginn), wahlweise geradeaus weiter. Als Abzweig oder Einmündung (Num3). |
+| 6 | **Verzweigung** | Zulauf, Abzweige nach links und/oder rechts (jeder mit eigenem Winkel, Radius und Beginn), wahlweise geradeaus weiter. Zum Zusammenführen gibt es die Zuführung (7). |
 | 7 | **Zuführung** | Das Gegenstück: Strecken von links und/oder rechts hinten laufen auf eine Linie zusammen. |
 | 8 | **Auswählen / Verschieben** | Bestehende AD-Punkte mit dem Kasten auswählen, verschieben, kopieren, löschen. |
 
@@ -88,15 +101,16 @@ Mit **Num1** öffnet sich beim Platzieren ein Menü mit allen Bauarten – Zahl 
 | Num8 / Num2 / Num4 / Num6 | fein verschieben 0,1 m (LUmschalt 0,01 m) |
 | Num5 | Position festhalten |
 | Num0 | an den nächsten AD-Punkt setzen und dessen Richtung übernehmen |
-| Num1 | Bauart-Menü (LUmschalt + Num1 = vorige Bauart) |
+| Num1 | Bauart-Menü (LUmschalt + Num1 = vorige Bauart); Rechtsklick schließt das Menü, ohne das Bauen zu pausieren |
 | LAlt + Num1 | zu „Gerade auf Hilfslinie“ und zurück |
 | H | Hilfskreise an / aus |
 | Num- | Hilfe-Panel ein / aus |
 | Num+ | Draufsicht an / aus |
+| LStrg + Num+ | Draufsicht zurück über die Person / das Fahrzeug, in deren Blickrichtung |
 | Num* | AutoDrive-Netz anzeigen an / aus |
 | Entf / LUmschalt + Entf | Hilfslinie bei der Maus entfernen / zurückholen |
 | LStrg + LAlt + Z | letzte Strecke (bzw. Verschiebung) rückgängig |
-| LStrg + LAlt + B | Einstellungen – danach geht es an derselben Stelle weiter |
+| LStrg + LAlt + B | Einstellungen der aktuellen Bauart – danach geht es an derselben Stelle weiter |
 
 Mit gedrückter LUmschalt-, LStrg- oder LAlt-Taste zoomt das Mausrad nicht.
 
@@ -105,18 +119,23 @@ Mit gedrückter LUmschalt-, LStrg- oder LAlt-Taste zoomt das Mausrad nicht.
 | Bauart | Taste | Funktion |
 |---|---|---|
 | Bucht | LStrg + Mausrad | Radius von Zu- und Abfahrt (LUmschalt = fein) |
-| | LAlt + Mausrad | Punkte der Kurven |
+| Bucht | LAlt + Mausrad | Punkte der Kurven |
+| | LStrg + Seitentaste / LStrg + Linksklick | Zu- oder Abfahrt **tangential an eine Hilfslinie**: erst neben die Kurve klicken, dann auf die Hilfslinie. Der Winkel folgt der Linie, der Radius bleibt wie eingestellt, und für jede Bucht wird berechnet, wo die Kurve an die Fahrspur anschließt, damit sie genau auf der Linie beginnt bzw. endet. Die Linie darf vor oder hinter der bisherigen Kurve liegen. **LStrg + Num0** = aus. |
+| | LAlt + Linksklick | auf Zu- oder Abfahrt: diese Kurve geht auf die andere Seite |
+| | LStrg + Mausrad (Kurve ausgerichtet) | Radius der ausgerichteten Kurve – der Anschluss an die Fahrspur wandert mit, die Kurve bleibt an der Hilfslinie |
+| | Num9 | **Fahrsilo automatisch einpassen:** Maus ins Fahrsilo nahe der Einfahrt, Num9 – Richtung entlang des Silos, Buchten mittig, Abstand = Silobreite / Anzahl, Ziele 2 m vor der Rückwand. Danach mit Num8/2/4/6 nachjustieren und Linksklick. |
+| | Num3 | Bezugspunkt: Maus = erste Bucht oder Mitte aller Buchten (mittig im Silo ausrichten; Abstand = Silobreite / Anzahl). Ist die Position fest (z. B. nach Num9), bleiben die Buchten stehen – nur der Bezugspunkt wechselt |
 | Kurve, Bogen | LStrg + Mausrad | Radius |
 | | LAlt + Mausrad | Punkte |
 | | Num3 | Fahrtrichtung umdrehen |
 | | Num, | Verbindungsart wechseln |
 | Hilfslinie | LStrg + Mausrad | Länge je Seite ±5 m (LUmschalt ±1 m) |
+| | LAlt + Mausrad | Linie seitlich (parallel) verschieben – jedes neue Drücken von LAlt wechselt den Schritt: 1 m → 0,5 m → 0,1 m → 0,01 m. Der erste Schritt startet genau auf der zuletzt gesetzten (bzw. ausgerichteten) Linie, der Abstand dazu wird angezeigt. |
 | Gerade | Linksklick, Linksklick | Start, Ende |
 | | LAlt + Mausrad | max. Punktabstand |
 | | Num0 | Start verwerfen |
 | Verzweigung, Zuführung | LStrg + Mausrad | beide Radien |
 | | LAlt + Mausrad | Punkte je Kurve |
-| | Num3 | Abzweig / Einmündung (nur Verzweigung) |
 | | Num, | Einbahn / beidseitig |
 | | Num0 | Start (Zuführung: Ende des Ablaufs) auf einen AD-Punkt legen – wird damit verbunden, danach dreht sich alles um diesen Punkt |
 | | LAlt + Linksklick auf eine Seite | diesen Abzweig entfernen / zurückholen |
@@ -129,7 +148,10 @@ Solange LStrg oder LAlt gedrückt ist, bleibt eine Verzweigung / Zuführung steh
 - Bauart **Hilfslinie / Kreuz**: Linksklick setzt eine Linie mit Querlinie. Die Linie hat ein Lineal (Striche jeden Meter, alle 5 m länger, alle 10 m die Meterzahl) und zeigt ihre Länge.
 - Die letzten zwei Linien sind orange und türkis – sie sind die Grundlage für den **Bogen**.
 - Hilfslinien werden je Karte und Spielstand gespeichert und sind nur bei dir sichtbar.
+- **LStrg + Seitentaste der Maus** (oder LStrg + Linksklick) an einer vorhandenen Hilfslinie (Haupt- oder Querlinie), an der Wand eines **Fahrsilos** (Seitenwand = längs, Einfahrt/Rückseite = quer) oder an der Kante eines **Gebäudes** (Bau- und Planierflächen des Gebäudes; die Kante bei der Maus zählt – haben Gebäude keine solchen Flächen, werden ihre Achsen genommen): die neue Linie wird parallel dazu gedreht. Solange sie parallel bleibt, zeigen eine gelbe Messlinie und das Panel ihren **Abstand** zu dieser Linie.
 - **Entf** entfernt die Linie bei der Maus, **LUmschalt + Entf** holt sie zurück, **LStrg + LAlt + L** entfernt alle.
+
+![Hilfslinie parallel zur Silowand](docs/images/guide_parallel_de.png)
 
 ## Verzweigung / Zuführung an Hilfslinien ausrichten
 
@@ -139,11 +161,13 @@ Solange LStrg oder LAlt gedrückt ist, bleibt eine Verzweigung / Zuführung steh
 
 Der **zuerst** ausgerichtete Abzweig verschiebt die ganze Verzweigung entlang ihrer Achse. Hängt der Start mit Num0 an einem AD-Punkt, wird stattdessen der Zulauf verlängert. Der **zweite** Abzweig verschiebt nur, wo er auf der Hauptlinie beginnt. **LStrg + Num0** schaltet die Ausrichtung aus.
 
-Als Maustaste wird eine **Seitentaste der Maus** genommen: einfach beim Platzieren mit LStrg drücken, der Mod merkt sie sich. Die Nummer steht auch im Einstellungsfenster.
+Als Maustaste wird eine **Seitentaste der Maus** genommen: einfach beim Platzieren mit LStrg drücken, der Mod merkt sie sich. Die Nummer steht auch im Einstellungsfenster. **Ohne Seitentaste** (einfache Maus, Touchpad) geht überall auch **LStrg + Linksklick**.
 
 ## AutoDrive-Punkte auswählen, verschieben, kopieren, löschen
 
 Bauart **Auswählen / Verschieben** – am besten in der Draufsicht:
+
+![Verbindungen](docs/images/connections_de.png)
 
 | Taste | Funktion |
 |---|---|
@@ -152,8 +176,16 @@ Bauart **Auswählen / Verschieben** – am besten in der Draufsicht:
 | ausgewählten Punkt ziehen | ganze Auswahl verschieben |
 | Num3 | frei / entlang einer Hilfslinie / quer dazu |
 | Num8/2/4/6 | Auswahl um 0,1 m schieben (LUmschalt 0,01 m) |
-| LStrg + LAlt + Z | letzte Verschiebung rückgängig |
+| LStrg + LAlt + Z | letzte Verschiebung bzw. Änderung der Verbindungen rückgängig |
+| Num7 | Auswahl genau auf die Hilfslinie legen, an der sie entlang liegt (Haupt- oder Querlinie, im Schnitt höchstens 15 m entfernt) – ergibt eine saubere Gerade |
+| Num5 (genau ein Punkt gewählt) | AD-Ziel auf diesen Punkt setzen, umbenennen oder mit leerem Namen entfernen – überall auf der Karte, ohne hinzufahren |
+| LAlt + Mausrad | Punktzahl eines Abschnitts ändern (Kurve oder Gerade): alle seine Punkte oder nur den ersten und letzten auswählen. Die Form bleibt (Kurve durch die alten Punkte), die Endpunkte bleiben, die Zwischenpunkte werden neu verteilt. **Linksklick** oder **Num Enter** = übernehmen, **Num0** = abbrechen. Im Abschnitt darf nichts abzweigen und kein Ziel liegen. |
+| Num/ (genau zwei Punkte gewählt) | gerade Strecke zwischen den beiden Punkten: **LAlt + Mausrad** = Zahl der Zwischenpunkte, **Num,** = Richtung / beidseitig, **Linksklick** oder **Num Enter** = anlegen, **Num0** = abbrechen. Die Richtung geht vom Ende einer Strecke zum Anfang der anderen, wenn das eindeutig ist. |
+| Num9 | wie Num7 und die Punkte zusätzlich gleichmäßig zwischen den beiden äußeren verteilen |
 | LStrg + C oder Einfg | Auswahl kopieren – die Kopie hängt an der Maus, Linksklick fügt sie ein (mehrmals möglich), drehen wie beim Platzieren |
+| Num, | Verbindungen der Auswahl: Einbahn → beidseitig → rückwärts → Einbahn (auch nur Anfangs- und Endpunkt einer Strecke wählen) |
+| LStrg + Num, | Richtung der Einbahn- / Rückwärts-Verbindungen umdrehen |
+| LAlt + Num, | Haupt- / Nebenstrecke umschalten |
 | Entf, nochmal Entf (innerhalb 3 s) | Auswahl löschen – **nicht rückgängig zu machen** |
 | Num0 | Kopieren beenden / Auswahl aufheben |
 
@@ -161,7 +193,7 @@ Kopiert werden die Verbindungen zwischen den ausgewählten Punkten (mit ihrer Ar
 
 ## Draufsicht und AutoDrive bearbeiten
 
-- **Num+** schaltet eine Draufsicht wie im Baumenü ein: W A S D bewegen, Mausrad zoomen, **Leertaste halten + Maus ziehen** dreht und kippt (Pos1 = Drehen ohne Leertaste). Esc oder Num+ zurück.
+- Der Baukasten **startet in der Draufsicht** über dem Traktor bzw. der Person, in deren Blickrichtung, **Num+** schaltet sie aus und wieder ein: W A S D bewegen, Mausrad zoomen, **Leertaste halten + Maus ziehen** dreht und kippt (Pos1 = Drehen ohne Leertaste). Esc oder Num+ zurück.
 - **Num*** zeigt das AutoDrive-Netz in der Umgebung, auch zu Fuß.
 - **Kurzer Rechtsklick / Num Enter** pausiert das Bauen und gibt Maus und Tasten an den AutoDrive-Editor. AutoDrive bearbeitet mit der Maus nur im Editor-Modus „erweitert“ (**Num/** stellt ihn ein), bei eingeblendetem AD-HUD und wenn du in einem Fahrzeug sitzt. Das Panel zeigt diese Punkte an.
 
@@ -170,8 +202,15 @@ Kopiert werden die Verbindungen zwischen den ausgewählten Punkten (mit ihrer Ar
 - **Mehrspieler:** Der Mod muss auf dem Server und bei allen Spielern in derselben Version installiert sein.
 - **Anbindung:** Die neue Strecke wird nur dort mit dem bestehenden Netz verbunden, wo du es mit Num0 festlegst. Alles andere verbindest du im AutoDrive-Editor.
 - **Rückfahr-Buchten:** Von dem Punkt, an dem das Rückwärtsfahren beginnt, darf keine weitere Strecke abgehen – sonst findet AutoDrive den Weg ins Ziel nicht mehr.
+- **Deutsche Tastatur:** Beim Bauen nimmt „Rückgängig“ sowohl LStrg + LAlt + **Z** als auch **Y**. Außerhalb des Baukastens richtet sich das Spiel nach der Tastenposition der US-Tastatur – dort ist es auf deutscher Tastatur **LStrg + LAlt + Y**. Ändern lässt sich das unter Optionen → Steuerung („AD Strecken-Baukasten: letzte Strecke rückgängig“).
 - Einstellungen werden lokal in `modSettings/FS25_AutoDriveRouteBuilder.xml` gespeichert.
 - Texte und Schaubilder gibt es auf Deutsch und Englisch.
+
+## Unterstützen
+
+Der Mod ist kostenlos. Wenn er dir Zeit spart und du etwas zurückgeben möchtest, freue ich mich über eine kleine Spende – ganz freiwillig.
+
+[![Spenden mit PayPal](https://img.shields.io/badge/Spenden-PayPal-0070ba?logo=paypal&logoColor=white)](https://paypal.me/toneslin)
 
 ## Fehler und Wünsche
 

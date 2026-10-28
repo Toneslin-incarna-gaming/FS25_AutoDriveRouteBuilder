@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+    <GuiElement profile="newLayer"/>
+    <Bitmap profile="dialogFullscreenBg"/>
+    <GuiElement profile="fs25_dialogBg" id="dialogBg" size="1700px 1010px">
+        <ThreePartBitmap profile="fs25_dialogBgMiddleSmall"/>
+        <ThreePartBitmap profile="fs25_dialogBgTopSmall"/>
+        <ThreePartBitmap profile="fs25_dialogBgBottom"/>
+
+        <BoxLayout profile="ad_common_dialogContentContainer" id="contentBox">
+            <Text profile="ad_common_dialogTitle" text="$l10n_adrb_title"/>
+            <ThreePartBitmap profile="ad_common_dialogTitleLineSeparator"/>
+
+            <BoxLayout profile="ad_common_hBox" id="rowTop" width="1640px" height="44px">
+                <Text profile="ad_common_dialogText" text="$l10n_adrb_buildType" width="110px" textAlignment="right" textVerticalAlignment="middle" height="40px" textBold="true" textSize="18px"/>
+                <MultiTextOption profile="fs25_multiTextOption" id="option_buildType" width="420px" height="40px" onClick="onBuildTypeChanged"/>
+                <Text profile="ad_common_dialogText" id="lbl_name" text="$l10n_adrb_name" width="120px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_name" width="280px" height="36px" enterWhenClickOutside="true" maxCharacters="30" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                <Text profile="ad_common_dialogText" id="lbl_startNumber" text="$l10n_adrb_startNumber" width="150px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_startNumber" width="100px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+            </BoxLayout>
+
+            <BoxLayout profile="ad_common_hBox" id="rowMain" width="1640px" height="560px" alignmentY="top">
+                <BoxLayout profile="ad_common_hBox" id="colLeft" flowDirection="vertical" alignmentX="center" alignmentY="top" elementSpacing="10px" width="1080px" height="560px">
+                <BoxLayout profile="ad_common_hBox" id="rowS0" width="1080px" height="34px">
+                    <Text profile="ad_common_dialogText" id="rowS0Text" text="$l10n_adrb_sectionBay" width="1050px" textBold="true" textSize="18px" textColor="0.6 0.85 0.15 1" textAlignment="left" textVerticalAlignment="middle" height="34px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowS1" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_count" width="170px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_count" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_spacing" width="190px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_spacing" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_pointSpacing" width="190px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_pointSpacing" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowS2" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_lengthTarget" width="170px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_lengthTarget" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_totalLength" width="190px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_totalLength" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_exitAt" width="190px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_exitAt" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowS3" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_endLength" width="170px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_endLength" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_turnOffset" width="400px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_turnOffset" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowS4" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_approach" width="100px" textAlignment="right" textVerticalAlignment="middle" height="36px" textBold="true"/>
+                    <MultiTextOption profile="fs25_multiTextOption" id="option_approachSide" width="200px" height="36px"/>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_angle" width="80px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_approachAngle" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_radius" width="90px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_approachRadius" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_points" width="80px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_curvePoints" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowS5" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_exit" width="100px" textAlignment="right" textVerticalAlignment="middle" height="36px" textBold="true"/>
+                    <MultiTextOption profile="fs25_multiTextOption" id="option_exitSide" width="200px" height="36px"/>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_angle" width="80px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_exitAngle" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_radius" width="90px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_exitRadius" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_points" width="80px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_exitPoints" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowK0" width="1080px" height="34px">
+                    <Text profile="ad_common_dialogText" id="rowK0Text" text="$l10n_adrb_sectionCurve" width="1050px" textBold="true" textSize="18px" textColor="0.6 0.85 0.15 1" textAlignment="left" textVerticalAlignment="middle" height="34px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowK1" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" id="lbl_curveSide" text="$l10n_adrb_side" width="80px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <MultiTextOption profile="fs25_multiTextOption" id="option_curveSide" width="200px" height="36px"/>
+                    <Text profile="ad_common_dialogText" id="lbl_curveAngle" text="$l10n_adrb_angle" width="80px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_curveAngle" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" id="lbl_curveRadius" text="$l10n_adrb_radius" width="90px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_curveRadius" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_points" width="80px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_curveCount" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowK2" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_connection" width="160px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <MultiTextOption profile="fs25_multiTextOption" id="option_curveConnection" width="300px" height="36px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowY0" width="1080px" height="34px">
+                    <Text profile="ad_common_dialogText" id="rowY0Text" text="$l10n_adrb_sectionBranch" width="1050px" textBold="true" textSize="18px" textColor="0.6 0.85 0.15 1" textAlignment="left" textVerticalAlignment="middle" height="34px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowY1" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" id="lbl_branchIn" text="$l10n_adrb_branchIn" width="130px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_branchIn" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" id="lbl_branchStraight" text="$l10n_adrb_branchStraight" width="380px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_branchStraight" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowY2" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" id="lbl_branchOut" text="$l10n_adrb_branchOut" width="230px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_branchOut" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_branchPoints" width="200px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_branchPoints" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowY3" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_branchLeft" width="150px" textAlignment="right" textVerticalAlignment="middle" height="36px" textBold="true"/>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_angle" width="80px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_branchLeftAngle" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_radius" width="90px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_branchLeftRadius" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" id="lbl_branchAtL" text="$l10n_adrb_branchAt" width="290px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_branchLeftAt" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowY4" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_branchRightLong" width="150px" textAlignment="right" textVerticalAlignment="middle" height="36px" textBold="true"/>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_angle" width="80px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_branchRightAngle" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_radius" width="90px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_branchRightRadius" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" id="lbl_branchAtR" text="$l10n_adrb_branchAt" width="290px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_branchRightAt" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowY5" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" id="lbl_direction" text="$l10n_adrb_direction" width="110px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <MultiTextOption profile="fs25_multiTextOption" id="option_branchMode" width="260px" height="36px"/>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_connection" width="140px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <MultiTextOption profile="fs25_multiTextOption" id="option_branchConnection" width="260px" height="36px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowY6" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_alignButton" width="560px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_alignButton" width="80px" height="36px" enterWhenClickOutside="true" maxCharacters="2" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_alignButtonHint" width="420px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowG0" width="1080px" height="34px">
+                    <Text profile="ad_common_dialogText" id="rowG0Text" text="$l10n_adrb_sectionLine" width="1050px" textBold="true" textSize="18px" textColor="0.6 0.85 0.15 1" textAlignment="left" textVerticalAlignment="middle" height="34px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowG1" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_lineSpacing" width="300px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <TextInput profile="fs25_dialogTextInput" id="input_lineSpacing" width="90px" height="36px" enterWhenClickOutside="true" maxCharacters="6" onEscPressed="onEscPressed">
+                        <ThreePartBitmap profile="fs25_textInputBg"/>
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon"/>
+                        </Bitmap>
+                    </TextInput>
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_connection" width="160px" textAlignment="right" textVerticalAlignment="middle" height="36px"/>
+                    <MultiTextOption profile="fs25_multiTextOption" id="option_lineConnection" width="300px" height="36px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowG2" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_lineInfo" width="1040px" textAlignment="left" textVerticalAlignment="middle" height="36px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowM0" width="1080px" height="34px">
+                    <Text profile="ad_common_dialogText" id="rowM0Text" text="$l10n_adrb_sectionMove" width="1050px" textBold="true" textSize="18px" textColor="0.6 0.85 0.15 1" textAlignment="left" textVerticalAlignment="middle" height="34px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowM" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_moveInfo" width="1040px" textAlignment="left" textVerticalAlignment="middle" height="36px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowL0" width="1080px" height="34px">
+                    <Text profile="ad_common_dialogText" id="rowL0Text" text="$l10n_adrb_sectionGuide" width="1050px" textBold="true" textSize="18px" textColor="0.6 0.85 0.15 1" textAlignment="left" textVerticalAlignment="middle" height="34px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowL" width="1080px" height="40px">
+                    <Text profile="ad_common_dialogText" text="$l10n_adrb_guideInfo" width="1040px" textAlignment="left" textVerticalAlignment="middle" height="36px"/>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="rowDiagram" width="1080px" height="242px">
+                    <Bitmap profile="baseReference" id="diagramElement" size="700px 240px" imageColor="1 1 1 1"/>
+                </BoxLayout>
+                </BoxLayout>
+                <BoxLayout profile="ad_common_hBox" id="colHelp" flowDirection="vertical" alignmentX="center" alignmentY="top" elementSpacing="2px" width="520px" height="560px">
+                <Text profile="ad_common_dialogText" id="helpTitle" text="$l10n_adrb_helpTitle" width="490px" height="40px" textSize="18px" textBold="true" textColor="0.6 0.85 0.15 1" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help1" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help2" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help3" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help4" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help5" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help6" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help7" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help8" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help9" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help10" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help11" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help12" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help13" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                <Text profile="ad_common_dialogText" id="help14" text="" width="490px" height="36px" textSize="14px" textMaxNumLines="2" textAlignment="left" textVerticalAlignment="middle"/>
+                </BoxLayout>
+            </BoxLayout>
+        </BoxLayout>
+
+        <BoxLayout profile="ad_common_dialogButtonBoxOutsideContentContainer">
+            <Button profile="buttonOK" text="$l10n_adrb_place" onClick="onClickOk"/>
+            <Bitmap profile="fs25_dialogButtonBoxSeparator"/>
+            <Button profile="buttonBack" text="$l10n_button_back" onClick="onClickBack"/>
+        </BoxLayout>
+    </GuiElement>
+</GUI>
