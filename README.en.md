@@ -10,11 +10,11 @@ Builds AutoDrive routes from settings and places them with the mouse – instead
 
 ## What it looks like
 
-**Put bays into a bunker silo automatically** – mouse into the silo, Num9, done:
+Put bays into a bunker silo automatically – mouse into the silo, Num9, done:
 
 ![Num9 in a bunker silo](docs/images/silo_fit_en.png)
 
-**Approach along a guide line** – the radius stays, the point where it joins the bay is computed:
+Approach along a guide line – the radius stays, the point where it joins the bay is computed:
 
 ![Approach along a guide line](docs/images/bay_align_en.png)
 
@@ -27,12 +27,8 @@ Builds AutoDrive routes from settings and places them with the mouse – instead
 ## Installation
 
 1. Download the zip file from the [releases](../../releases) (do not unpack it).
-2. Put it into the mods folder, e.g. `Documents/My Games/FarmingSimulator2025/mods`.
+2. Put it into the mods folder: `%USERPROFILE%\Documents\My Games\FarmingSimulator2025\mods`
 3. Activate it together with AutoDrive when loading the savegame.
-
-Build it yourself: zip `modDesc.xml`, `icon_*.dds` and the folders `scripts` and `gui` – `modDesc.xml` has to be directly in the zip file. The folder `docs` does not belong into the mod.
-
-Also by me: [AutoDrive Jobs (FS25_AutoDriveJobs)](https://github.com/Toneslin-incarna-gaming/FS25_AutoDriveJobs).
 
 ## Contents
 
@@ -40,171 +36,218 @@ Also by me: [AutoDrive Jobs (FS25_AutoDriveJobs)](https://github.com/Toneslin-in
 - [Build types](#build-types)
 - [Keys while placing](#keys-while-placing)
 - [Guide lines](#guide-lines)
-- [Aligning a branch / merge to guide lines](#aligning-a-branch--merge-to-guide-lines)
-- [Selecting, moving, copying, deleting AutoDrive points](#selecting-moving-copying-deleting-autodrive-points)
+- [Along guide lines](#along-guide-lines)
+- [Editing AutoDrive points](#editing-autodrive-points)
 - [Top view and editing AutoDrive](#top-view-and-editing-autodrive)
 - [Good to know](#good-to-know)
 - [Support](#support)
 
 ## Getting started
 
-1. **LCtrl + LAlt + B** starts the builder – in the top view and with the build type **guide line**.
-2. **Num1** opens the build type menu, a number or a click chooses the type.
-3. **LCtrl + LAlt + B** again opens the **settings of the build type you are using** (explanation on the right, diagram below). "Place" or "Back" returns to the same place.
-4. **Left click** builds. The builder stays active, so you can go on building.
-5. **End** closes the builder.
+1. LCtrl + LAlt + B starts the builder – in the top view and with the build type guide line.
+2. Num1 opens the build type menu, a number or a click chooses the type.
+3. LCtrl + LAlt + B again opens the settings of the build type you are using (explanation on the right, diagram below). "Place" or "Back" returns to the same place.
+4. Left click builds. The builder stays active, so you can go on building.
+5. End closes the builder.
 
-**LCtrl + LAlt + P** starts placing directly with the last values. **LCtrl + LAlt + Z** undoes the last route.
+LCtrl + LAlt + P starts placing directly with the last values. LCtrl + LAlt + Z undoes the last route.
 
-While placing, a panel at the top left shows the current values and all keys of the build type (**Num-** collapses it).
+While placing, a panel at the top left shows the current values and all keys of the build type (Num- collapses it).
 
 ## Build types
 
-While placing, **Num1** opens a menu with all build types – press the number or click it.
+While placing, Num1 opens a menu with all build types – press the number or click it.
 
-| No. | Build type | What it builds |
-|---|---|---|
-| 1 | **Reverse bay** | One or more bays side by side (silo, parking, unloading): forward in to the turning piece, reverse into the target, forward out via the exit. With AD targets (target name + running number) and collector roads for several bays. |
-| 2 | **Free curve** | A curve from the mouse position with side, angle, radius and number of points. |
-| 3 | **Guide line / cross** | A line with a cross line and a ruler for aligning. Only you see it, nothing is built in AutoDrive. |
-| 4 | **Straight on guide line** | 1st click = start, 2nd click = end, both are put onto the guide line. The points are spread evenly (spacing at most "max. point spacing"). |
-| 5 | **Arc** | An arc touching the last two guide lines. The mouse chooses corner and size. |
-| 6 | **Branch** | Feed line, branches to the left and/or right (each with its own angle, radius and start), optionally straight on. For merging there is the merge (7). |
-| 7 | **Merge** | The counterpart: lines from behind left and/or right join into one line. |
-| 8 | **Select / move** | Select existing AD points with a box, move, copy, delete them. |
+Connection types (curve, arc, straight, branch): V = one-way forward, B = both ways, R = reverse.
 
-| Reverse bay | Branch |
-|---|---|
-| ![Bay](docs/images/diagram_en.png) | ![Branch](docs/images/branch_en.png) |
-| **Merge** | **Free curve** |
-| ![Merge](docs/images/merge_en.png) | ![Curve](docs/images/curve_en.png) |
-| **Arc** | **Guide line** |
-| ![Arc](docs/images/arc_en.png) | ![Guide line](docs/images/guide_en.png) |
-| **Straight on guide line** | |
-| ![Straight](docs/images/line_en.png) | |
+### 1. Reverse bay
 
-**Connection types** (curve, arc, straight, branch): **V** = one-way forward, **B** = both ways, **R** = reverse.
+One or more bays side by side (silo, parking, unloading): forward in to the turning piece, reverse into the target, forward out via the exit. With AD targets (target name + running number) and collector roads for several bays.
+
+<img src="docs/images/diagram_en.png" width="100%" alt="Reverse bay">
+
+### 2. Free curve
+
+A curve from the mouse position with side, angle, radius and number of points.
+
+<img src="docs/images/curve_en.png" width="100%" alt="Free curve">
+
+### 3. Guide line / cross
+
+A line with a cross line and a ruler for aligning. Only you see it, nothing is built in AutoDrive.
+
+<img src="docs/images/guide_en.png" width="100%" alt="Guide line / cross">
+
+### 4. Straight on guide line
+
+First click = start, second click = end, both are put onto the guide line. The points are spread evenly (spacing at most "max. point spacing").
+
+<img src="docs/images/line_en.png" width="100%" alt="Straight on guide line">
+
+### 5. Arc
+
+An arc touching the last two guide lines. The mouse chooses corner and size.
+
+<img src="docs/images/arc_en.png" width="100%" alt="Arc">
+
+### 6. Branch
+
+Feed line, branches to the left and/or right (each with its own angle, radius and start), optionally straight on. For merging there is the merge (7).
+
+<img src="docs/images/branch_en.png" width="100%" alt="Branch">
+
+### 7. Merge
+
+The counterpart: lines from behind left and/or right join into one line.
+
+<img src="docs/images/merge_en.png" width="100%" alt="Merge">
+
+### 8. Select / move
+
+Select existing AD points with a box, move, copy, delete them.
+
+<img src="docs/images/connections_en.png" width="100%" alt="Select / move">
 
 ## Keys while placing
 
+In the game the same is shown in the panel at the top left (Num- shows / hides it).
+
 ### All build types
 
-| Key | Function |
+| What you want to do | How |
 |---|---|
-| Left click | build (stays active) |
-| End | close the builder |
-| short right click / Num Enter | edit AutoDrive (building paused) and back |
-| Mouse wheel | camera zoom |
-| hold middle mouse button / Num/ | look around |
-| LShift + wheel or `,` / `.` | rotate in 5° steps |
-| LShift + LAlt + wheel | fine rotation 0.1° (with LCtrl 0.01°) |
-| Num8 / Num2 / Num4 / Num6 | fine move 0.1 m (LShift 0.01 m) |
-| Num5 | lock position |
-| Num0 | snap to the nearest AD point and take its direction |
-| Num1 | build type menu (LShift + Num1 = previous type); a right click closes the menu without pausing building |
-| LAlt + Num1 | to "straight on guide line" and back |
-| H | helper circles on / off |
-| Num- | help panel on / off |
-| Num+ | top view on / off |
-| LCtrl + Num+ | top view back above the person / vehicle, in their view direction |
-| Num* | show the AutoDrive network on / off |
-| Del / LShift + Del | remove the guide line near the mouse / bring it back |
-| LCtrl + LAlt + Z | undo the last route (or move) |
-| LCtrl + LAlt + B | settings of the current build type – afterwards it goes on at the same place |
+| Build | left click (the builder stays active) |
+| Close the builder | End |
+| Rotate | LShift + wheel or `,` / `.` |
+| Fine rotate | LShift + LAlt + wheel (with LCtrl even finer) |
+| Fine move | Num8 / Num2 / Num4 / Num6 |
+| Lock position | Num5 |
+| Put onto an AD point | Num0 |
+| Other build type | Num1, then number or click |
+| Top view on / off | Num+ |
+| Top view back to you / the vehicle | LCtrl + Num+ |
+| Move / rotate the top view | W A S D / hold Space + drag the mouse |
+| Camera zoom / look around | wheel / middle mouse button or Num/ |
+| Show the AutoDrive network | Num* |
+| Edit with AutoDrive yourself | short right click or Num Enter |
+| Undo the last route | LCtrl + LAlt + Z |
+| Settings of the build type | LCtrl + LAlt + B |
+| Help / helper circles on / off | Num- / H |
 
-While LShift, LCtrl or LAlt is held, the mouse wheel does not zoom.
+### 1. Reverse bay
 
-### Per build type
+| What you want to do | How |
+|---|---|
+| Curves bigger / smaller | LCtrl + wheel |
+| More / fewer points in the curves | LAlt + wheel |
+| Put the bays into a bunker silo | mouse into the silo (near the entrance), then Num9 |
+| Mouse at the first bay / in the middle | Num3 |
+| Approach or exit along a guide line | LCtrl + left click on the curve, then on the line |
+| Approach or exit to the other side | LAlt + left click on the curve |
 
-| Build type | Key | Function |
-|---|---|---|
-| Bay | LCtrl + wheel | radius of approach and exit (LShift = fine) |
-| Bay | LAlt + wheel | points of the curves |
-| | LCtrl + side button / LCtrl + left click | approach or exit **tangent to a guide line**: click next to the curve first, then on the guide line. The angle follows the line, the radius stays as set, and for every bay the point where the curve joins the lane is computed so that the curve starts / ends exactly on the line. The line may lie before or behind the current curve. **LCtrl + Num0** = off. |
-| | LAlt + left click | on the approach or exit: this curve goes to the other side |
-| | LCtrl + wheel (curve aligned) | radius of the aligned curve – the joining point on the lane follows, the curve stays on the guide line |
-| | Num9 | **fit to a bunker silo automatically:** mouse into the silo near the entrance, Num9 – direction along the silo, bays centred, spacing = silo width / number, targets 2 m in front of the back wall. Then fine tune with Num8/2/4/6 and left click. |
-| | Num3 | reference point: mouse = first bay or middle of all bays (centre them in a silo; spacing = silo width / number). With a fixed position (e.g. after Num9) the bays stay where they are – only the reference point changes |
-| Curve, arc | LCtrl + wheel | radius |
-| | LAlt + wheel | points |
-| | Num3 | swap driving direction |
-| | Num, | change connection type |
-| Guide line | LCtrl + wheel | length per side ±5 m (LShift ±1 m) |
-| | LAlt + wheel | move the line sideways (parallel) – every new LAlt press changes the step: 1 m → 0.5 m → 0.1 m → 0.01 m. The first step starts exactly on the line set (or aligned to) last, the distance to it is shown. |
-| Straight | left click, left click | start, end |
-| | LAlt + wheel | max. point spacing |
-| | Num0 | discard the start |
-| Branch, merge | LCtrl + wheel | both radii |
-| | LAlt + wheel | points per curve |
-| | Num, | one-way / both ways |
-| | Num0 | put the start (merge: end of the outgoing line) onto an AD point – it gets connected, then everything turns around this point |
-| | LAlt + left click on a side | remove this branch / bring it back |
-| | LCtrl + mouse button | align to a guide line (see below) |
+### 2. Free curve and 5. Arc
 
-While LCtrl or LAlt is held, a branch / merge stays where it is, so that its sides can be clicked.
+| What you want to do | How |
+|---|---|
+| Curve bigger / smaller | LCtrl + wheel |
+| More / fewer points | LAlt + wheel |
+| Turn the driving direction | Num3 |
+| One-way / both ways / reverse | Num, |
+| Arc: choose corner and size | move the mouse |
+
+### 3. Guide line
+
+| What you want to do | How |
+|---|---|
+| Set a guide line | left click |
+| Line longer / shorter | LCtrl + wheel |
+| Move the line sideways | LAlt + wheel |
+| Parallel to a line, silo wall or building | LCtrl + left click on it |
+| Delete / bring back a line | Del / LShift + Del |
+| Delete all guide lines | LCtrl + LAlt + L |
+
+### 4. Straight on guide line
+
+| What you want to do | How |
+|---|---|
+| Set the start | first left click near the guide line |
+| Set the end and build | second left click |
+| Spacing of the points | LAlt + wheel |
+| Discard the start | Num0 |
+
+### 6. Branch and 7. Merge
+
+| What you want to do | How |
+|---|---|
+| Curves bigger / smaller | LCtrl + wheel |
+| More / fewer points | LAlt + wheel |
+| One-way / both ways | Num, |
+| Connect to an AD point | Num0 |
+| Branch along a guide line | LCtrl + left click on the branch, then on the line |
+| Leave out a branch / bring it back | LAlt + left click on the side |
 
 ## Guide lines
 
-- Build type **Guide line / cross**: a left click sets a line with a cross line. The line has a ruler (tick every metre, longer every 5 m, distance every 10 m) and shows its length.
-- The last two lines are orange and cyan – they are the base for the **arc**.
-- Guide lines are saved per map and savegame and only visible to you.
-- **LCtrl + side mouse button** (or LCtrl + left click) at an existing guide line (main or cross line), at a wall of a **bunker silo** (side wall = along, entrance/back = across) or at an edge of a **building** (its building / levelling areas; the edge at the mouse counts – buildings without such areas use their axes): the new line is turned parallel to it. As long as it stays parallel, a yellow measuring line and the panel show its **distance** to that line.
-- **Del** removes the line near the mouse, **LShift + Del** brings it back, **LCtrl + LAlt + L** removes all.
+Guide lines help you to build exactly. Only you see them, AutoDrive builds nothing from them.
+
+- Set a line: build type 3, left click. The line has a ruler in metres.
+- Make it parallel: LCtrl + left click on another guide line, a silo wall or the edge of a building. The new line turns parallel to it.
+- See the distance: while the line is parallel, a yellow line shows the distance.
+- Move it sideways: LAlt + wheel. Every new LAlt press makes the steps smaller: 1 m, 0.5 m, 0.1 m, 0.01 m.
+- Delete: Del deletes the line near the mouse, LShift + Del brings it back, LCtrl + LAlt + L deletes all.
+- The lines are saved with the savegame. The arc needs the last two (orange and turquoise).
 
 ![Guide line parallel to a silo wall](docs/images/guide_parallel_en.png)
 
-## Aligning a branch / merge to guide lines
+## Along guide lines
 
-1. **LCtrl + mouse button** next to a branch (left or right of the main line) – the side is chosen.
-2. **LCtrl + mouse button** on a guide line (main or cross line). The branch gets the fitting angle and its run-out lies exactly on the line.
-3. The same again for the other side.
+Works for the reverse bay (approach and exit), branch and merge:
 
-The branch aligned **first** moves the whole branch along its axis. If the start is fixed to an AD point with Num0, the feed line gets longer instead. The **second** branch only moves where it starts on the main line. **LCtrl + Num0** switches the alignment off.
+1. LCtrl + left click on the curve or the branch.
+2. LCtrl + left click on the guide line.
+3. Done: the curve now starts or ends exactly on the line.
 
-A **side button of the mouse** is used as mouse button: just press it with LCtrl while placing and the mod remembers it. The number is also shown in the settings dialog. **Without a side button** (simple mouse, touchpad) **LCtrl + left click** works everywhere as well.
+LCtrl + Num0 undoes it. A side mouse button works instead of the left click too.
 
-## Selecting, moving, copying, deleting AutoDrive points
+## Editing AutoDrive points
 
-Build type **Select / move** – best in the top view:
+Build type 8 (select / move), best in the top view:
 
-![Connections](docs/images/connections_en.png)
-
-| Key | Function |
+| What you want to do | How |
 |---|---|
-| drag the left mouse button | box = select points (LShift = add, LCtrl = remove) |
-| click on a point | select only this one (LShift = add / remove) |
-| drag a selected point | move the whole selection |
-| Num3 | free / along a guide line / across it |
-| Num8/2/4/6 | move the selection 0.1 m (LShift 0.01 m) |
-| LCtrl + LAlt + Z | undo the last move or connection change |
-| Num7 | put the selection exactly onto the guide line it lies along (main or cross line, at most 15 m away on average) – gives a clean straight |
-| Num5 (exactly one point selected) | set an AD target on this point, rename it or remove it with an empty name – anywhere on the map, without driving there |
-| LAlt + wheel | change the point count of a segment (curve or straight): select all its points or only the first and last one. The shape stays (curve through the old points), the end points stay, the inner points are spread anew. **left click** or **Num Enter** = apply, **Num0** = cancel. Nothing may branch off and no target may lie inside the segment. |
-| Num/ (exactly two points selected) | straight line between the two points: **LAlt + wheel** = number of inner points, **Num,** = direction / both ways, **left click** or **Num Enter** = create, **Num0** = cancel. The direction goes from the end of one road to the start of the other if that is clear. |
-| Num9 | like Num7 and also spread the points evenly between the two outer ones |
-| LCtrl + C or Ins | copy the selection – the copy hangs on the mouse, left click pastes it (several times), rotate as while placing |
-| Num, | connections of the selection: one-way → both ways → reverse → one-way (selecting only the first and last point of a route works too) |
-| LCtrl + Num, | turn the direction of one-way / reverse connections around |
-| LAlt + Num, | switch main / sub route (Num, = the decimal key of the numpad) |
-| Del, Del again (within 3 s) | delete the selection – **cannot be undone** |
-| Num0 | stop copying / clear the selection |
+| Select points | hold the left mouse button and drag a box |
+| Add points / deselect points | box with LShift / with LCtrl |
+| Select one point | left click on the point |
+| Clear the selection | Num0 |
+| Move the selection | drag a selected point with the left mouse button |
+| Fine move | Num8 / Num2 / Num4 / Num6 |
+| Move only along / across the guide line | Num3 |
+| Put the selection straight on the guide line | Num7 (Num9: and spread evenly) |
+| One-way / both ways / reverse | Num, |
+| Turn the driving direction | LCtrl + Num, |
+| Main / sub route | LAlt + Num, |
+| Change the points of a curve | select the curve, LAlt + wheel, then left click |
+| Straight line between two points | select 2 points, Num/, then left click |
+| Set / rename / delete an AD target | select 1 point, Num5 |
+| Copy the selection | LCtrl + C, left click pastes, Num0 = done |
+| Delete the selection | Del, then Del again – **cannot be undone** |
+| Undo | LCtrl + LAlt + Z |
 
-The connections between the selected points (with their type) and the sub route flag are copied. AD targets are not copied because AutoDrive allows every target name only once.
+Tip: for a long route it is enough to select the first and the last point. AD targets are not copied.
 
 ## Top view and editing AutoDrive
 
-- The builder **starts in the top view** above the tractor or the person, in their view direction, **Num+** switches it off and on again: W A S D move, wheel zooms, **hold Space + drag the mouse** rotates and tilts (Home = rotate without Space). Esc or Num+ goes back.
-- **Num*** shows the AutoDrive network around you, also on foot.
-- **Short right click / Num Enter** pauses building and gives mouse and keys to the AutoDrive editor. AutoDrive only edits with the mouse in editor mode "extended" (**Num/** sets it), with the AD HUD shown and while you sit in a vehicle. The panel shows these states.
+- The builder starts in the top view above you or your vehicle.
+- Short right click or Num Enter: building pauses and you edit with the normal AutoDrive editor. Num Enter brings you back.
+- AutoDrive only edits with the mouse while you sit in a vehicle, the AD HUD is on and the editor is set to "extended" (Num/). The panel shows you what is missing.
 
 ## Good to know
 
-- **Multiplayer:** the mod has to be installed on the server and on all players in the same version.
-- **Connecting:** a new route is only connected to the existing network where you set it with Num0. Everything else is connected in the AutoDrive editor.
-- **Reverse bays:** no other road may leave from the point where reversing starts – otherwise AutoDrive does not find the way into the target any more.
-- **German keyboard:** while building, "undo" takes LCtrl + LAlt + **Z** as well as **Y**. Outside the builder the game uses the key position of the US keyboard – on a German keyboard that is **LCtrl + LAlt + Y**. It can be changed in Options → Controls ("AD Route Builder: undo last route").
-- Settings are saved locally in `modSettings/FS25_AutoDriveRouteBuilder.xml`.
-- Texts and diagrams are available in German and English.
+- Multiplayer: the mod has to be on the server **and** on all players in the same version.
+- New routes are only connected to the AD network where you use Num0. Connect the rest in the AutoDrive editor.
+- Reverse bay: no other route may branch off where reversing starts.
+- German keyboard: undo works with LCtrl + LAlt + Z or Y.
+- Texts and pictures in German and English.
 
 ## Support
 

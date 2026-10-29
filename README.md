@@ -10,11 +10,11 @@ Baut AutoDrive-Strecken aus Einstellungen und platziert sie mit der Maus – sta
 
 ## So sieht's aus
 
-**Buchten automatisch ins Fahrsilo setzen** – Maus ins Silo, Num9, fertig:
+Buchten automatisch ins Fahrsilo setzen – Maus ins Silo, Num9, fertig:
 
 ![Num9 im Fahrsilo](docs/images/silo_fit_de.png)
 
-**Zufahrt an eine Hilfslinie anlegen** – der Radius bleibt, der Anschluss an die Bucht wird berechnet:
+Zufahrt an eine Hilfslinie anlegen – der Radius bleibt, der Anschluss an die Bucht wird berechnet:
 
 ![Zufahrt an Hilfslinie](docs/images/bay_align_de.png)
 
@@ -27,12 +27,8 @@ Baut AutoDrive-Strecken aus Einstellungen und platziert sie mit der Maus – sta
 ## Installation
 
 1. Die Zip-Datei aus den [Releases](../../releases) laden (nicht entpacken).
-2. In den Mods-Ordner legen, z. B. `Dokumente/My Games/FarmingSimulator2025/mods`.
+2. In den Mods-Ordner legen: `%USERPROFILE%\Documents\My Games\FarmingSimulator2025\mods`
 3. Beim Laden des Spielstands zusammen mit AutoDrive aktivieren.
-
-Selbst bauen: `modDesc.xml`, `icon_*.dds` und die Ordner `scripts` und `gui` zippen – `modDesc.xml` muss direkt in der Zip-Datei liegen. Der Ordner `docs` gehört nicht in den Mod.
-
-Ebenfalls von mir: [AutoDrive Aufträge (FS25_AutoDriveJobs)](https://github.com/Toneslin-incarna-gaming/FS25_AutoDriveJobs).
 
 ## Inhalt
 
@@ -40,171 +36,218 @@ Ebenfalls von mir: [AutoDrive Aufträge (FS25_AutoDriveJobs)](https://github.com
 - [Bauarten](#bauarten)
 - [Tasten beim Platzieren](#tasten-beim-platzieren)
 - [Hilfslinien](#hilfslinien)
-- [Verzweigung / Zuführung an Hilfslinien ausrichten](#verzweigung--zuführung-an-hilfslinien-ausrichten)
-- [AutoDrive-Punkte auswählen, verschieben, kopieren, löschen](#autodrive-punkte-auswählen-verschieben-kopieren-löschen)
+- [An Hilfslinien anlegen](#an-hilfslinien-anlegen)
+- [AutoDrive-Punkte bearbeiten](#autodrive-punkte-bearbeiten)
 - [Draufsicht und AutoDrive bearbeiten](#draufsicht-und-autodrive-bearbeiten)
 - [Gut zu wissen](#gut-zu-wissen)
 - [Unterstützen](#unterstützen)
 
 ## Start
 
-1. **LStrg + LAlt + B** startet den Baukasten – in der Draufsicht und mit der Bauart **Hilfslinie**.
-2. **Num1** öffnet das Bauart-Menü, eine Zahl oder ein Klick wählt die Bauart.
-3. Nochmal **LStrg + LAlt + B** öffnet die **Einstellungen der Bauart, die du gerade benutzt** (rechts eine Erklärung, unten ein Schaubild). „Platzieren“ oder „Zurück“ führt an dieselbe Stelle zurück.
-4. **Linksklick** baut. Der Baukasten bleibt aktiv, du kannst gleich weiterbauen.
-5. **Ende** beendet den Baukasten.
+1. LStrg + LAlt + B startet den Baukasten – in der Draufsicht und mit der Bauart Hilfslinie.
+2. Num1 öffnet das Bauart-Menü, eine Zahl oder ein Klick wählt die Bauart.
+3. Nochmal LStrg + LAlt + B öffnet die Einstellungen der Bauart, die du gerade benutzt (rechts eine Erklärung, unten ein Schaubild). „Platzieren“ oder „Zurück“ führt an dieselbe Stelle zurück.
+4. Linksklick baut. Der Baukasten bleibt aktiv, du kannst gleich weiterbauen.
+5. Ende beendet den Baukasten.
 
-**LStrg + LAlt + P** startet das Platzieren direkt mit den zuletzt benutzten Werten. **LStrg + LAlt + Z** nimmt die letzte Strecke zurück.
+LStrg + LAlt + P startet das Platzieren direkt mit den zuletzt benutzten Werten. LStrg + LAlt + Z nimmt die letzte Strecke zurück.
 
-Beim Platzieren zeigt ein Panel links oben die aktuellen Werte und alle Tasten der Bauart (**Num-** klappt es ein / aus).
+Beim Platzieren zeigt ein Panel links oben die aktuellen Werte und alle Tasten der Bauart (Num- klappt es ein / aus).
 
 ## Bauarten
 
-Mit **Num1** öffnet sich beim Platzieren ein Menü mit allen Bauarten – Zahl drücken oder anklicken.
+Mit Num1 öffnet sich beim Platzieren ein Menü mit allen Bauarten – Zahl drücken oder anklicken.
 
-| Nr. | Bauart | Was sie baut |
-|---|---|---|
-| 1 | **Rückfahr-Bucht** | Eine oder mehrere Buchten nebeneinander (Silo, Parkplatz, Abladestelle): vorwärts rein bis zum Wendestück, rückwärts ins Ziel, vorwärts über die Abfahrt raus. Mit AD-Zielen (Zielname + fortlaufende Nummer) und Sammelstraßen bei mehreren Buchten. |
-| 2 | **Freie Kurve** | Eine Kurve ab der Mausposition mit Seite, Winkel, Radius und Punktzahl. |
-| 3 | **Hilfslinie / Kreuz** | Eine Linie mit Querlinie und Lineal zum Ausrichten. Nur du siehst sie, AutoDrive baut nichts. |
-| 4 | **Gerade auf Hilfslinie** | 1. Klick = Start, 2. Klick = Ende, beide werden auf die Hilfslinie gesetzt. Die Punkte werden gleichmäßig verteilt (Abstand höchstens „max. Punktabstand“). |
-| 5 | **Bogen** | Ein Bogen, der die letzten zwei Hilfslinien berührt. Die Maus wählt Ecke und Größe. |
-| 6 | **Verzweigung** | Zulauf, Abzweige nach links und/oder rechts (jeder mit eigenem Winkel, Radius und Beginn), wahlweise geradeaus weiter. Zum Zusammenführen gibt es die Zuführung (7). |
-| 7 | **Zuführung** | Das Gegenstück: Strecken von links und/oder rechts hinten laufen auf eine Linie zusammen. |
-| 8 | **Auswählen / Verschieben** | Bestehende AD-Punkte mit dem Kasten auswählen, verschieben, kopieren, löschen. |
+Verbindungsarten (Kurve, Bogen, Gerade, Verzweigung): V = Einbahn vorwärts, B = beidseitig, R = rückwärts.
 
-| Rückfahr-Bucht | Verzweigung |
-|---|---|
-| ![Bucht](docs/images/diagram_de.png) | ![Verzweigung](docs/images/branch_de.png) |
-| **Zuführung** | **Freie Kurve** |
-| ![Zuführung](docs/images/merge_de.png) | ![Kurve](docs/images/curve_de.png) |
-| **Bogen** | **Hilfslinie** |
-| ![Bogen](docs/images/arc_de.png) | ![Hilfslinie](docs/images/guide_de.png) |
-| **Gerade auf Hilfslinie** | |
-| ![Gerade](docs/images/line_de.png) | |
+### 1. Rückfahr-Bucht
 
-**Verbindungsarten** (Kurve, Bogen, Gerade, Verzweigung): **V** = Einbahn vorwärts, **B** = beidseitig, **R** = rückwärts.
+Eine oder mehrere Buchten nebeneinander (Silo, Parkplatz, Abladestelle): vorwärts rein bis zum Wendestück, rückwärts ins Ziel, vorwärts über die Abfahrt raus. Mit AD-Zielen (Zielname + fortlaufende Nummer) und Sammelstraßen bei mehreren Buchten.
+
+<img src="docs/images/diagram_de.png" width="100%" alt="Rückfahr-Bucht">
+
+### 2. Freie Kurve
+
+Eine Kurve ab der Mausposition mit Seite, Winkel, Radius und Punktzahl.
+
+<img src="docs/images/curve_de.png" width="100%" alt="Freie Kurve">
+
+### 3. Hilfslinie / Kreuz
+
+Eine Linie mit Querlinie und Lineal zum Ausrichten. Nur du siehst sie, AutoDrive baut nichts.
+
+<img src="docs/images/guide_de.png" width="100%" alt="Hilfslinie / Kreuz">
+
+### 4. Gerade auf Hilfslinie
+
+Erster Klick = Start, zweiter Klick = Ende, beide werden auf die Hilfslinie gesetzt. Die Punkte werden gleichmäßig verteilt (Abstand höchstens „max. Punktabstand“).
+
+<img src="docs/images/line_de.png" width="100%" alt="Gerade auf Hilfslinie">
+
+### 5. Bogen
+
+Ein Bogen, der die letzten zwei Hilfslinien berührt. Die Maus wählt Ecke und Größe.
+
+<img src="docs/images/arc_de.png" width="100%" alt="Bogen">
+
+### 6. Verzweigung
+
+Zulauf, Abzweige nach links und/oder rechts (jeder mit eigenem Winkel, Radius und Beginn), wahlweise geradeaus weiter. Zum Zusammenführen gibt es die Zuführung (7).
+
+<img src="docs/images/branch_de.png" width="100%" alt="Verzweigung">
+
+### 7. Zuführung
+
+Das Gegenstück: Strecken von links und/oder rechts hinten laufen auf eine Linie zusammen.
+
+<img src="docs/images/merge_de.png" width="100%" alt="Zuführung">
+
+### 8. Auswählen / Verschieben
+
+Bestehende AD-Punkte mit dem Kasten auswählen, verschieben, kopieren, löschen.
+
+<img src="docs/images/connections_de.png" width="100%" alt="Auswählen / Verschieben">
 
 ## Tasten beim Platzieren
 
+Im Spiel steht dasselbe im Panel links oben (Num- blendet es ein und aus).
+
 ### Für alle Bauarten
 
-| Taste | Funktion |
+| Was du machen willst | So geht's |
 |---|---|
-| Linksklick | bauen (bleibt aktiv) |
-| Ende | Baukasten beenden |
-| kurzer Rechtsklick / Num Enter | AutoDrive bearbeiten (Bauen pausiert) und zurück |
-| Mausrad | Kamera zoomen |
-| mittlere Maustaste halten / Num/ | frei umsehen |
-| LUmschalt + Mausrad oder `,` / `.` | drehen in 5°-Schritten |
-| LUmschalt + LAlt + Mausrad | fein drehen 0,1° (mit LStrg 0,01°) |
-| Num8 / Num2 / Num4 / Num6 | fein verschieben 0,1 m (LUmschalt 0,01 m) |
-| Num5 | Position festhalten |
-| Num0 | an den nächsten AD-Punkt setzen und dessen Richtung übernehmen |
-| Num1 | Bauart-Menü (LUmschalt + Num1 = vorige Bauart); Rechtsklick schließt das Menü, ohne das Bauen zu pausieren |
-| LAlt + Num1 | zu „Gerade auf Hilfslinie“ und zurück |
-| H | Hilfskreise an / aus |
-| Num- | Hilfe-Panel ein / aus |
-| Num+ | Draufsicht an / aus |
-| LStrg + Num+ | Draufsicht zurück über die Person / das Fahrzeug, in deren Blickrichtung |
-| Num* | AutoDrive-Netz anzeigen an / aus |
-| Entf / LUmschalt + Entf | Hilfslinie bei der Maus entfernen / zurückholen |
-| LStrg + LAlt + Z | letzte Strecke (bzw. Verschiebung) rückgängig |
-| LStrg + LAlt + B | Einstellungen der aktuellen Bauart – danach geht es an derselben Stelle weiter |
+| Bauen | Linksklick (der Baukasten bleibt aktiv) |
+| Baukasten beenden | Ende |
+| Drehen | LUmschalt + Mausrad oder `,` / `.` |
+| Fein drehen | LUmschalt + LAlt + Mausrad (mit LStrg noch feiner) |
+| Fein verschieben | Num8 / Num2 / Num4 / Num6 |
+| Position festhalten | Num5 |
+| An einen AD-Punkt setzen | Num0 |
+| Andere Bauart | Num1, dann Zahl oder Klick |
+| Draufsicht an / aus | Num+ |
+| Draufsicht zurück zu dir / zum Fahrzeug | LStrg + Num+ |
+| Draufsicht bewegen / drehen | W A S D / Leertaste halten + Maus ziehen |
+| Kamera zoomen / umsehen | Mausrad / mittlere Maustaste oder Num/ |
+| AutoDrive-Netz zeigen | Num* |
+| Selbst mit AutoDrive bearbeiten | kurzer Rechtsklick oder Num Enter |
+| Letzte Strecke rückgängig | LStrg + LAlt + Z |
+| Einstellungen der Bauart | LStrg + LAlt + B |
+| Hilfe / Hilfskreise ein / aus | Num- / H |
 
-Mit gedrückter LUmschalt-, LStrg- oder LAlt-Taste zoomt das Mausrad nicht.
+### 1. Rückfahr-Bucht
 
-### Je Bauart
+| Was du machen willst | So geht's |
+|---|---|
+| Kurven größer / kleiner | LStrg + Mausrad |
+| Mehr / weniger Punkte in den Kurven | LAlt + Mausrad |
+| Buchten automatisch ins Fahrsilo setzen | Maus ins Silo (nahe der Einfahrt), dann Num9 |
+| Maus an der ersten Bucht / in der Mitte | Num3 |
+| Zu- oder Abfahrt an eine Hilfslinie anlegen | LStrg + Linksklick auf die Kurve, dann auf die Linie |
+| Zu- oder Abfahrt auf die andere Seite | LAlt + Linksklick auf die Kurve |
 
-| Bauart | Taste | Funktion |
-|---|---|---|
-| Bucht | LStrg + Mausrad | Radius von Zu- und Abfahrt (LUmschalt = fein) |
-| Bucht | LAlt + Mausrad | Punkte der Kurven |
-| | LStrg + Seitentaste / LStrg + Linksklick | Zu- oder Abfahrt **tangential an eine Hilfslinie**: erst neben die Kurve klicken, dann auf die Hilfslinie. Der Winkel folgt der Linie, der Radius bleibt wie eingestellt, und für jede Bucht wird berechnet, wo die Kurve an die Fahrspur anschließt, damit sie genau auf der Linie beginnt bzw. endet. Die Linie darf vor oder hinter der bisherigen Kurve liegen. **LStrg + Num0** = aus. |
-| | LAlt + Linksklick | auf Zu- oder Abfahrt: diese Kurve geht auf die andere Seite |
-| | LStrg + Mausrad (Kurve ausgerichtet) | Radius der ausgerichteten Kurve – der Anschluss an die Fahrspur wandert mit, die Kurve bleibt an der Hilfslinie |
-| | Num9 | **Fahrsilo automatisch einpassen:** Maus ins Fahrsilo nahe der Einfahrt, Num9 – Richtung entlang des Silos, Buchten mittig, Abstand = Silobreite / Anzahl, Ziele 2 m vor der Rückwand. Danach mit Num8/2/4/6 nachjustieren und Linksklick. |
-| | Num3 | Bezugspunkt: Maus = erste Bucht oder Mitte aller Buchten (mittig im Silo ausrichten; Abstand = Silobreite / Anzahl). Ist die Position fest (z. B. nach Num9), bleiben die Buchten stehen – nur der Bezugspunkt wechselt |
-| Kurve, Bogen | LStrg + Mausrad | Radius |
-| | LAlt + Mausrad | Punkte |
-| | Num3 | Fahrtrichtung umdrehen |
-| | Num, | Verbindungsart wechseln |
-| Hilfslinie | LStrg + Mausrad | Länge je Seite ±5 m (LUmschalt ±1 m) |
-| | LAlt + Mausrad | Linie seitlich (parallel) verschieben – jedes neue Drücken von LAlt wechselt den Schritt: 1 m → 0,5 m → 0,1 m → 0,01 m. Der erste Schritt startet genau auf der zuletzt gesetzten (bzw. ausgerichteten) Linie, der Abstand dazu wird angezeigt. |
-| Gerade | Linksklick, Linksklick | Start, Ende |
-| | LAlt + Mausrad | max. Punktabstand |
-| | Num0 | Start verwerfen |
-| Verzweigung, Zuführung | LStrg + Mausrad | beide Radien |
-| | LAlt + Mausrad | Punkte je Kurve |
-| | Num, | Einbahn / beidseitig |
-| | Num0 | Start (Zuführung: Ende des Ablaufs) auf einen AD-Punkt legen – wird damit verbunden, danach dreht sich alles um diesen Punkt |
-| | LAlt + Linksklick auf eine Seite | diesen Abzweig entfernen / zurückholen |
-| | LStrg + Maustaste | an Hilfslinie ausrichten (siehe unten) |
+### 2. Freie Kurve und 5. Bogen
 
-Solange LStrg oder LAlt gedrückt ist, bleibt eine Verzweigung / Zuführung stehen, damit du ihre Seiten anklicken kannst.
+| Was du machen willst | So geht's |
+|---|---|
+| Kurve größer / kleiner | LStrg + Mausrad |
+| Mehr / weniger Punkte | LAlt + Mausrad |
+| Fahrtrichtung umdrehen | Num3 |
+| Einbahn / beidseitig / rückwärts | Num, |
+| Bogen: Ecke und Größe wählen | Maus bewegen |
+
+### 3. Hilfslinie
+
+| Was du machen willst | So geht's |
+|---|---|
+| Hilfslinie setzen | Linksklick |
+| Linie länger / kürzer | LStrg + Mausrad |
+| Linie seitlich verschieben | LAlt + Mausrad |
+| Parallel zu Linie, Silowand oder Gebäude | LStrg + Linksklick daran |
+| Linie löschen / zurückholen | Entf / LUmschalt + Entf |
+| Alle Hilfslinien löschen | LStrg + LAlt + L |
+
+### 4. Gerade auf Hilfslinie
+
+| Was du machen willst | So geht's |
+|---|---|
+| Start setzen | erster Linksklick nahe der Hilfslinie |
+| Ende setzen und bauen | zweiter Linksklick |
+| Abstand der Punkte | LAlt + Mausrad |
+| Start verwerfen | Num0 |
+
+### 6. Verzweigung und 7. Zuführung
+
+| Was du machen willst | So geht's |
+|---|---|
+| Kurven größer / kleiner | LStrg + Mausrad |
+| Mehr / weniger Punkte | LAlt + Mausrad |
+| Einbahn / beidseitig | Num, |
+| An einen AD-Punkt anschließen | Num0 |
+| Abzweig an eine Hilfslinie anlegen | LStrg + Linksklick auf den Abzweig, dann auf die Linie |
+| Einen Abzweig weglassen / zurückholen | LAlt + Linksklick auf die Seite |
 
 ## Hilfslinien
 
-- Bauart **Hilfslinie / Kreuz**: Linksklick setzt eine Linie mit Querlinie. Die Linie hat ein Lineal (Striche jeden Meter, alle 5 m länger, alle 10 m die Meterzahl) und zeigt ihre Länge.
-- Die letzten zwei Linien sind orange und türkis – sie sind die Grundlage für den **Bogen**.
-- Hilfslinien werden je Karte und Spielstand gespeichert und sind nur bei dir sichtbar.
-- **LStrg + Seitentaste der Maus** (oder LStrg + Linksklick) an einer vorhandenen Hilfslinie (Haupt- oder Querlinie), an der Wand eines **Fahrsilos** (Seitenwand = längs, Einfahrt/Rückseite = quer) oder an der Kante eines **Gebäudes** (Bau- und Planierflächen des Gebäudes; die Kante bei der Maus zählt – haben Gebäude keine solchen Flächen, werden ihre Achsen genommen): die neue Linie wird parallel dazu gedreht. Solange sie parallel bleibt, zeigen eine gelbe Messlinie und das Panel ihren **Abstand** zu dieser Linie.
-- **Entf** entfernt die Linie bei der Maus, **LUmschalt + Entf** holt sie zurück, **LStrg + LAlt + L** entfernt alle.
+Hilfslinien helfen beim genauen Bauen. Nur du siehst sie, AutoDrive baut daraus nichts.
+
+- Linie setzen: Bauart 3, Linksklick. Die Linie hat ein Lineal mit Metern.
+- Parallel ausrichten: LStrg + Linksklick an eine andere Hilfslinie, eine Silowand oder eine Gebäudekante. Die neue Linie dreht sich parallel dazu.
+- Abstand sehen: Solange die Linie parallel ist, zeigt eine gelbe Linie den Abstand.
+- Seitlich verschieben: LAlt + Mausrad. Jedes neue Drücken von LAlt macht die Schritte kleiner: 1 m, 0,5 m, 0,1 m, 0,01 m.
+- Löschen: Entf löscht die Linie bei der Maus, LUmschalt + Entf holt sie zurück, LStrg + LAlt + L löscht alle.
+- Die Linien bleiben im Spielstand gespeichert. Die letzten zwei (orange und türkis) braucht der Bogen.
 
 ![Hilfslinie parallel zur Silowand](docs/images/guide_parallel_de.png)
 
-## Verzweigung / Zuführung an Hilfslinien ausrichten
+## An Hilfslinien anlegen
 
-1. **LStrg + Maustaste** neben einen Abzweig klicken (links oder rechts der Hauptlinie) – die Seite ist gewählt.
-2. **LStrg + Maustaste** auf eine Hilfslinie klicken (Haupt- oder Querlinie). Der Abzweig bekommt den passenden Winkel und sein Auslauf liegt genau auf der Linie.
-3. Für die andere Seite dasselbe nochmal.
+Geht bei Rückfahr-Bucht (Zu- und Abfahrt), Verzweigung und Zuführung:
 
-Der **zuerst** ausgerichtete Abzweig verschiebt die ganze Verzweigung entlang ihrer Achse. Hängt der Start mit Num0 an einem AD-Punkt, wird stattdessen der Zulauf verlängert. Der **zweite** Abzweig verschiebt nur, wo er auf der Hauptlinie beginnt. **LStrg + Num0** schaltet die Ausrichtung aus.
+1. LStrg + Linksklick auf die Kurve oder den Abzweig.
+2. LStrg + Linksklick auf die Hilfslinie.
+3. Fertig: Die Kurve beginnt bzw. endet jetzt genau auf der Linie.
 
-Als Maustaste wird eine **Seitentaste der Maus** genommen: einfach beim Platzieren mit LStrg drücken, der Mod merkt sie sich. Die Nummer steht auch im Einstellungsfenster. **Ohne Seitentaste** (einfache Maus, Touchpad) geht überall auch **LStrg + Linksklick**.
+LStrg + Num0 hebt das wieder auf. Statt Linksklick geht auch eine Seitentaste der Maus.
 
-## AutoDrive-Punkte auswählen, verschieben, kopieren, löschen
+## AutoDrive-Punkte bearbeiten
 
-Bauart **Auswählen / Verschieben** – am besten in der Draufsicht:
+Bauart 8 (Auswählen / Verschieben), am besten in der Draufsicht:
 
-![Verbindungen](docs/images/connections_de.png)
-
-| Taste | Funktion |
+| Was du machen willst | So geht's |
 |---|---|
-| linke Maustaste ziehen | Kasten aufziehen = Punkte auswählen (LUmschalt = dazu, LStrg = abwählen) |
-| Klick auf einen Punkt | nur diesen wählen (LUmschalt = dazu / weg) |
-| ausgewählten Punkt ziehen | ganze Auswahl verschieben |
-| Num3 | frei / entlang einer Hilfslinie / quer dazu |
-| Num8/2/4/6 | Auswahl um 0,1 m schieben (LUmschalt 0,01 m) |
-| LStrg + LAlt + Z | letzte Verschiebung bzw. Änderung der Verbindungen rückgängig |
-| Num7 | Auswahl genau auf die Hilfslinie legen, an der sie entlang liegt (Haupt- oder Querlinie, im Schnitt höchstens 15 m entfernt) – ergibt eine saubere Gerade |
-| Num5 (genau ein Punkt gewählt) | AD-Ziel auf diesen Punkt setzen, umbenennen oder mit leerem Namen entfernen – überall auf der Karte, ohne hinzufahren |
-| LAlt + Mausrad | Punktzahl eines Abschnitts ändern (Kurve oder Gerade): alle seine Punkte oder nur den ersten und letzten auswählen. Die Form bleibt (Kurve durch die alten Punkte), die Endpunkte bleiben, die Zwischenpunkte werden neu verteilt. **Linksklick** oder **Num Enter** = übernehmen, **Num0** = abbrechen. Im Abschnitt darf nichts abzweigen und kein Ziel liegen. |
-| Num/ (genau zwei Punkte gewählt) | gerade Strecke zwischen den beiden Punkten: **LAlt + Mausrad** = Zahl der Zwischenpunkte, **Num,** = Richtung / beidseitig, **Linksklick** oder **Num Enter** = anlegen, **Num0** = abbrechen. Die Richtung geht vom Ende einer Strecke zum Anfang der anderen, wenn das eindeutig ist. |
-| Num9 | wie Num7 und die Punkte zusätzlich gleichmäßig zwischen den beiden äußeren verteilen |
-| LStrg + C oder Einfg | Auswahl kopieren – die Kopie hängt an der Maus, Linksklick fügt sie ein (mehrmals möglich), drehen wie beim Platzieren |
-| Num, | Verbindungen der Auswahl: Einbahn → beidseitig → rückwärts → Einbahn (auch nur Anfangs- und Endpunkt einer Strecke wählen) |
-| LStrg + Num, | Richtung der Einbahn- / Rückwärts-Verbindungen umdrehen |
-| LAlt + Num, | Haupt- / Nebenstrecke umschalten |
-| Entf, nochmal Entf (innerhalb 3 s) | Auswahl löschen – **nicht rückgängig zu machen** |
-| Num0 | Kopieren beenden / Auswahl aufheben |
+| Punkte auswählen | linke Maustaste halten und Kasten ziehen |
+| Mehr Punkte dazu / Punkte abwählen | Kasten mit LUmschalt / mit LStrg |
+| Einen Punkt auswählen | Linksklick auf den Punkt |
+| Auswahl aufheben | Num0 |
+| Auswahl verschieben | ausgewählten Punkt mit der linken Maustaste ziehen |
+| Fein verschieben | Num8 / Num2 / Num4 / Num6 |
+| Nur entlang / quer zur Hilfslinie schieben | Num3 |
+| Auswahl gerade auf die Hilfslinie legen | Num7 (Num9: dazu gleichmäßig verteilen) |
+| Einbahn / beidseitig / rückwärts | Num, |
+| Fahrtrichtung umdrehen | LStrg + Num, |
+| Haupt- / Nebenstrecke | LAlt + Num, |
+| Punkte einer Kurve ändern | Kurve wählen, LAlt + Mausrad, dann Linksklick |
+| Gerade zwischen zwei Punkten | 2 Punkte wählen, Num/, dann Linksklick |
+| AD-Ziel setzen / umbenennen / löschen | 1 Punkt wählen, Num5 |
+| Auswahl kopieren | LStrg + C, Linksklick fügt ein, Num0 = fertig |
+| Auswahl löschen | Entf, dann nochmal Entf – **nicht rückgängig zu machen** |
+| Rückgängig | LStrg + LAlt + Z |
 
-Kopiert werden die Verbindungen zwischen den ausgewählten Punkten (mit ihrer Art) und die Nebenstrecken-Markierung. AD-Ziele werden nicht kopiert, weil AutoDrive jeden Zielnamen nur einmal erlaubt.
+Tipp: Bei einer langen Strecke reicht es, den ersten und den letzten Punkt zu wählen. AD-Ziele werden nicht mitkopiert.
 
 ## Draufsicht und AutoDrive bearbeiten
 
-- Der Baukasten **startet in der Draufsicht** über dem Traktor bzw. der Person, in deren Blickrichtung, **Num+** schaltet sie aus und wieder ein: W A S D bewegen, Mausrad zoomen, **Leertaste halten + Maus ziehen** dreht und kippt (Pos1 = Drehen ohne Leertaste). Esc oder Num+ zurück.
-- **Num*** zeigt das AutoDrive-Netz in der Umgebung, auch zu Fuß.
-- **Kurzer Rechtsklick / Num Enter** pausiert das Bauen und gibt Maus und Tasten an den AutoDrive-Editor. AutoDrive bearbeitet mit der Maus nur im Editor-Modus „erweitert“ (**Num/** stellt ihn ein), bei eingeblendetem AD-HUD und wenn du in einem Fahrzeug sitzt. Das Panel zeigt diese Punkte an.
+- Der Baukasten startet in der Draufsicht über dir bzw. deinem Fahrzeug.
+- Kurzer Rechtsklick oder Num Enter: Bauen pausiert, du bearbeitest mit dem normalen AutoDrive-Editor. Num Enter bringt dich zurück.
+- AutoDrive bearbeitet mit der Maus nur, wenn du in einem Fahrzeug sitzt, das AD-HUD an ist und der Editor auf „erweitert“ steht (Num/). Das Panel zeigt dir, was fehlt.
 
 ## Gut zu wissen
 
-- **Mehrspieler:** Der Mod muss auf dem Server und bei allen Spielern in derselben Version installiert sein.
-- **Anbindung:** Die neue Strecke wird nur dort mit dem bestehenden Netz verbunden, wo du es mit Num0 festlegst. Alles andere verbindest du im AutoDrive-Editor.
-- **Rückfahr-Buchten:** Von dem Punkt, an dem das Rückwärtsfahren beginnt, darf keine weitere Strecke abgehen – sonst findet AutoDrive den Weg ins Ziel nicht mehr.
-- **Deutsche Tastatur:** Beim Bauen nimmt „Rückgängig“ sowohl LStrg + LAlt + **Z** als auch **Y**. Außerhalb des Baukastens richtet sich das Spiel nach der Tastenposition der US-Tastatur – dort ist es auf deutscher Tastatur **LStrg + LAlt + Y**. Ändern lässt sich das unter Optionen → Steuerung („AD Strecken-Baukasten: letzte Strecke rückgängig“).
-- Einstellungen werden lokal in `modSettings/FS25_AutoDriveRouteBuilder.xml` gespeichert.
-- Texte und Schaubilder gibt es auf Deutsch und Englisch.
+- Mehrspieler: Der Mod muss auf dem Server **und** bei allen Spielern in derselben Version sein.
+- Neue Strecken werden nur dort mit dem AD-Netz verbunden, wo du Num0 benutzt. Den Rest verbindest du im AutoDrive-Editor.
+- Rückfahr-Bucht: Dort, wo das Rückwärtsfahren beginnt, darf keine andere Strecke abzweigen.
+- Deutsche Tastatur: Rückgängig geht mit LStrg + LAlt + Z oder Y.
+- Texte und Bilder gibt es auf Deutsch und Englisch.
 
 ## Unterstützen
 
