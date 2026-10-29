@@ -57,6 +57,7 @@ ADRouteBuilder.DEFAULTS = {
     branchConnection = "V",
     lineSpacing = "5",
     lineConnection = "V",
+    subRoute = "0",
     bayAnchor = "E",
     alignButton = "6"
 }
@@ -70,7 +71,7 @@ ADRouteBuilder.FIELDS = {"name", "startNumber", "count", "spacing", "lengthTarge
     "pointSpacing", "approachSide", "approachAngle", "approachRadius", "exitSide", "exitAngle", "exitRadius", "curvePoints", "endLength",
     "buildType", "curveSide", "curveAngle", "curveRadius", "curveCount", "curveConnection", "exitPoints", "turnOffset",
     "branchIn", "branchStraight", "branchOut", "branchPoints", "branchLeftAngle", "branchLeftRadius", "branchRightAngle",
-    "branchRightRadius", "branchMode", "branchConnection", "branchLeftAt", "branchRightAt", "lineSpacing", "lineConnection", "alignButton", "bayAnchor"}
+    "branchRightRadius", "branchMode", "branchConnection", "branchLeftAt", "branchRightAt", "lineSpacing", "lineConnection", "alignButton", "bayAnchor", "subRoute"}
 
 ADRouteBuilder.values = {}
 ADRouteBuilder.isPlacing = false
@@ -798,7 +799,11 @@ function ADRouteBuilder.buildLineWorld(p, tx, tz, precise)
     for i = 0, n do
         addPoint(s.x + (tx - s.x) * i / n, s.z + (tz - s.z) * i / n)
         if i > 0 then
-            table.insert(route.connections, {i, i + 1, p.lineConnection})
+            if ADRouteBuilder.arcReverseDir then
+                table.insert(route.connections, {i + 1, i, p.lineConnection})
+            else
+                table.insert(route.connections, {i, i + 1, p.lineConnection})
+            end
         end
     end
     table.insert(route.extraCrosses, {n + 1, 1, 0.5, 0})
@@ -2147,6 +2152,15 @@ function ADRouteBuilder.build()
         route = ADRouteBuilder.mergeIntoWayPoint(route, route.branchStart, anchor.id)
     end
     local sendRoute = {points = route.points, connections = route.connections, markers = route.markers}
+    local btSub = ADRouteBuilder.params.buildType
+    if ADRouteBuilder.isSubRoute() and (btSub == "K" or btSub == "B" or btSub == "G") then
+        -- sub route (curve, arc, straight line): AutoDrive's flag on every new point (LAlt + Num,)
+        local sub = AutoDrive ~= nil and AutoDrive.FLAG_SUBPRIO or 1
+        sendRoute.flags = {}
+        for i = 1, #route.points do
+            sendRoute.flags[i] = sub
+        end
+    end
     ADRBRouteEvent.sendEvent(sendRoute)
     ADRouteBuilder.lastActionWasMove = false
     ADRouteBuilder.savedRotation = ADRouteBuilder.rotation
@@ -2218,6 +2232,15 @@ function ADRouteBuilder.cycleConnection()
     ADRouteBuilder.values[field] = letters[p[field]]
 end
 
+function ADRouteBuilder.isSubRoute()
+    return ADRouteBuilder.values.subRoute == "1"
+end
+
+function ADRouteBuilder.toggleSubRoute()
+    ADRouteBuilder.values.subRoute = ADRouteBuilder.isSubRoute() and "0" or "1"
+    pcall(ADRouteBuilder.saveSettings)
+end
+
 function ADRouteBuilder.getConnectionText(p)
     local keys = {[ADRouteBuilder.CON_FORWARD] = "adrb_conForward", [ADRouteBuilder.CON_DUAL] = "adrb_conDual", [ADRouteBuilder.CON_REVERSE] = "adrb_conReverse"}
     local con = p.curveConnection
@@ -2226,7 +2249,11 @@ function ADRouteBuilder.getConnectionText(p)
     elseif p.buildType == "G" then
         con = p.lineConnection
     end
-    return getText(keys[con] or "adrb_conForward", "connection")
+    local text = getText(keys[con] or "adrb_conForward", "connection")
+    if p.buildType == "K" or p.buildType == "B" or p.buildType == "G" then
+        text = text .. ", " .. getText(ADRouteBuilder.isSubRoute() and "adrb_subRoute" or "adrb_mainRoute", "route")
+    end
+    return text
 end
 
 --- switches the build type while placing (Num1)
@@ -2676,14 +2703,16 @@ local PANEL_KEYS = {
         K = {
             "Kurve größer / kleiner\tLStrg + Mausrad (fein: + LUmschalt)",
             "Mehr / weniger Punkte\tLAlt + Mausrad",
-            "Fahrtrichtung umdrehen\tNum3",
-            "Einbahn / beidseitig / rückwärts\tNum,"},
+            "Einbahn / beidseitig / rückwärts\tNum,",
+            "Fahrtrichtung umdrehen\tLStrg + Num, (oder Num3)",
+            "Haupt- / Nebenstrecke\tLAlt + Num,"},
         B = {
             "Ecke und Größe wählen\tMaus bewegen",
             "Bogen größer / kleiner\tLStrg + Mausrad",
             "Mehr / weniger Punkte\tLAlt + Mausrad",
-            "Fahrtrichtung umdrehen\tNum3",
-            "Einbahn / beidseitig / rückwärts\tNum,"},
+            "Einbahn / beidseitig / rückwärts\tNum,",
+            "Fahrtrichtung umdrehen\tLStrg + Num, (oder Num3)",
+            "Haupt- / Nebenstrecke\tLAlt + Num,"},
         L = {
             "Hilfslinie setzen\tLinksklick",
             "Linie länger / kürzer\tLStrg + Mausrad (fein: + LUmschalt)",
@@ -2697,7 +2726,7 @@ local PANEL_KEYS = {
             "Einen Punkt auswählen\tLinksklick auf den Punkt (+ LUmschalt = dazu / weg)",
             "Auswahl aufheben\tNum0",
             "Auswahl verschieben\tAusgewählten Punkt mit der linken Maustaste ziehen",
-            "Fein verschieben\tNum8/2/4/6 (0,1 m, mit LUmschalt 0,01 m)",
+            "Fein verschieben\tNum8/2/4/6 (0,1 m, mit LStrg 0,01 m)",
             "Nur entlang / quer zur Hilfslinie schieben\tNum3",
             "Auswahl gerade auf die Hilfslinie legen\tNum7 (Num9: dazu gleichmäßig verteilen)",
             "Einbahn / beidseitig / rückwärts\tNum,",
@@ -2707,12 +2736,15 @@ local PANEL_KEYS = {
             "Gerade zwischen zwei Punkten\t2 Punkte wählen, Num/, dann Linksklick",
             "AD-Ziel setzen / umbenennen / löschen\t1 Punkt wählen, Num5",
             "Auswahl kopieren\tLStrg + C, Linksklick fügt ein, LUmschalt + Mausrad dreht, Num0 = fertig",
-            "Auswahl löschen\tEntf, dann nochmal Entf (nicht rückgängig!)"},
+            "Auswahl löschen\tEntf, dann nochmal Entf (nicht rückgängig!)",
+            "Baukasten beenden\tEnde"},
         G = {
             "Start setzen\t1. Linksklick nahe der Hilfslinie",
             "Ende setzen und bauen\t2. Linksklick",
             "Abstand der Punkte\tLAlt + Mausrad",
             "Einbahn / beidseitig / rückwärts\tNum,",
+            "Fahrtrichtung umdrehen\tLStrg + Num,",
+            "Haupt- / Nebenstrecke\tLAlt + Num,",
             "Start verwerfen\tNum0",
             "Zurück zur vorigen Bauart\tLAlt + Num1"},
         Z = {
@@ -2735,7 +2767,7 @@ local PANEL_KEYS = {
         common = {
             "Bauen / beenden\tLinksklick / Ende",
             "Drehen\tLUmschalt + Mausrad oder , / . (fein: LUmschalt + LAlt + Mausrad)",
-            "Fein verschieben / festhalten\tNum8/2/4/6 / Num5",
+            "Fein verschieben / festhalten\tNum8/2/4/6 (mit LStrg 0,01 m) / Num5",
             "An einen AD-Punkt setzen\tNum0",
             "Andere Bauart\tNum1, dann Zahl oder Klick",
             "Draufsicht an / aus\tNum+ (zurück zu dir / zum Fahrzeug: LStrg + Num+)",
@@ -2777,14 +2809,16 @@ local PANEL_KEYS = {
         K = {
             "Curve bigger / smaller\tLCtrl + wheel (fine: + LShift)",
             "More / fewer points\tLAlt + wheel",
-            "Turn the driving direction\tNum3",
-            "One-way / both ways / reverse\tNum,"},
+            "One-way / both ways / reverse\tNum,",
+            "Turn the driving direction\tLCtrl + Num, (or Num3)",
+            "Main / sub route\tLAlt + Num,"},
         B = {
             "Choose corner and size\tmove the mouse",
             "Arc bigger / smaller\tLCtrl + wheel",
             "More / fewer points\tLAlt + wheel",
-            "Turn the driving direction\tNum3",
-            "One-way / both ways / reverse\tNum,"},
+            "One-way / both ways / reverse\tNum,",
+            "Turn the driving direction\tLCtrl + Num, (or Num3)",
+            "Main / sub route\tLAlt + Num,"},
         L = {
             "Set a guide line\tleft click",
             "Line longer / shorter\tLCtrl + wheel (fine: + LShift)",
@@ -2798,7 +2832,7 @@ local PANEL_KEYS = {
             "Select one point\tleft click on the point (+ LShift = add / remove)",
             "Clear the selection\tNum0",
             "Move the selection\tdrag a selected point with the left mouse button",
-            "Fine move\tNum8/2/4/6 (0.1 m, with LShift 0.01 m)",
+            "Fine move\tNum8/2/4/6 (0.1 m, with LCtrl 0.01 m)",
             "Move only along / across the guide line\tNum3",
             "Put the selection straight on the guide line\tNum7 (Num9: and spread evenly)",
             "One-way / both ways / reverse\tNum,",
@@ -2808,12 +2842,15 @@ local PANEL_KEYS = {
             "Straight line between two points\tselect 2 points, Num/, then left click",
             "Set / rename / delete an AD target\tselect 1 point, Num5",
             "Copy the selection\tLCtrl + C, left click pastes, LShift + wheel rotates, Num0 = done",
-            "Delete the selection\tDel, then Del again (no undo!)"},
+            "Delete the selection\tDel, then Del again (no undo!)",
+            "Close the builder\tEnd"},
         G = {
             "Set the start\t1st left click near the guide line",
             "Set the end and build\t2nd left click",
             "Spacing of the points\tLAlt + wheel",
             "One-way / both ways / reverse\tNum,",
+            "Turn the driving direction\tLCtrl + Num,",
+            "Main / sub route\tLAlt + Num,",
             "Discard the start\tNum0",
             "Back to the type before\tLAlt + Num1"},
         Z = {
@@ -2836,7 +2873,7 @@ local PANEL_KEYS = {
         common = {
             "Build / finish\tleft click / End",
             "Rotate\tLShift + wheel or , / . (fine: LShift + LAlt + wheel)",
-            "Fine move / lock position\tNum8/2/4/6 / Num5",
+            "Fine move / lock position\tNum8/2/4/6 (with LCtrl 0.01 m) / Num5",
             "Put onto an AD point\tNum0",
             "Other build type\tNum1, then number or click",
             "Top view on / off\tNum+ (back to you / the vehicle: LCtrl + Num+)",
@@ -2932,7 +2969,13 @@ function ADRouteBuilder.drawPanel()
         end
         add("", "space")
         for _, l in ipairs(t.common) do
-            add("  " .. l, "common")
+            -- the select tool uses Num0, Num5, Num/, the left click and Num8/2/4/6 itself (see its own lines)
+            local skip = p.buildType == "M" and (string.find(l, "Num0", 1, true) or string.find(l, "Num5", 1, true)
+                or string.find(l, "Num/", 1, true) or string.find(l, "Num8", 1, true)
+                or string.find(l, "Bauen /", 1, true) or string.find(l, "Build /", 1, true))
+            if not skip then
+                add("  " .. l, "common")
+            end
         end
     end
     -- size of the panel
@@ -3307,7 +3350,7 @@ function ADRouteBuilder.changeRadius(delta)
         p.branchRightRadius = math.max(1, math.min(300, p.branchRightRadius + delta))
         ADRouteBuilder.values.branchLeftRadius = fmt(p.branchLeftRadius)
         ADRouteBuilder.values.branchRightRadius = fmt(p.branchRightRadius)
-    else
+    elseif p.buildType == "S" then
         -- bays: also for a curve aligned to a guide line - there the joining point follows the radius
         p.approachRadius = math.max(1, math.min(200, p.approachRadius + delta))
         p.exitRadius = math.max(1, math.min(200, p.exitRadius + delta))
@@ -3431,6 +3474,7 @@ function ADRouteBuilder.getLiveInfoValues(p)
         end
         return text .. " - " .. string.format(getText("adrb_liveLineMax", "max. %s m"), fmt(p.lineSpacing))
             .. " - " .. ADRouteBuilder.getConnectionText(p)
+            .. " - " .. getText(ADRouteBuilder.arcReverseDir and "adrb_curveDirBack" or "adrb_curveDirFwd", "direction")
     end
     local alignText = ""
     if ADRouteBuilder.alignPending ~= nil and (p.buildType == "Y" or p.buildType == "Z") then
@@ -3828,7 +3872,8 @@ function ADRouteBuilder:keyEvent(unicode, sym, modifier, isDown)
     end
     -- fine adjustment with the numpad
     -- (fine rotation: LShift + LAlt + mouse wheel, see mouseEvent)
-    local fineMove = ADRouteBuilder.shiftPressed and 0.01 or 0.1
+    -- 0.01 m with LCtrl (LShift + numpad gives the arrow keys on Windows with NumLock on); LShift kept as well
+    local fineMove = (ADRouteBuilder.ctrlPressed or ADRouteBuilder.shiftPressed) and 0.01 or 0.1
     if sym == Input.KEY_KP_minus then
         ADRouteBuilder.showPanel = not ADRouteBuilder.showPanel
         return
@@ -3867,7 +3912,7 @@ function ADRouteBuilder:keyEvent(unicode, sym, modifier, isDown)
                 ADRouteBuilder.lastX = ADRouteBuilder.lastX + rightX * d
                 ADRouteBuilder.lastZ = ADRouteBuilder.lastZ + rightZ * d
             end
-        else
+        elseif p ~= nil and (p.buildType == "K" or p.buildType == "B" or p.buildType == "G") then
             ADRouteBuilder.arcReverseDir = not ADRouteBuilder.arcReverseDir
         end
         return
@@ -3889,7 +3934,20 @@ function ADRouteBuilder:keyEvent(unicode, sym, modifier, isDown)
         ADRouteBuilder.exitTopView()
         return
     elseif sym == Input.KEY_KP_period or sym == Input.KEY_KP_comma then
-        ADRouteBuilder.cycleConnection()
+        -- like in the select tool: Num, = one-way / both ways / reverse, LCtrl + Num, = turn the
+        -- direction around, LAlt + Num, = main / sub route
+        local bt = ADRouteBuilder.params ~= nil and ADRouteBuilder.params.buildType or ""
+        if ADRouteBuilder.altPressed then
+            if bt == "K" or bt == "B" or bt == "G" then
+                ADRouteBuilder.toggleSubRoute()
+            end
+        elseif ADRouteBuilder.ctrlPressed then
+            if bt == "K" or bt == "B" or bt == "G" then
+                ADRouteBuilder.arcReverseDir = not ADRouteBuilder.arcReverseDir
+            end
+        elseif bt == "K" or bt == "B" or bt == "G" or bt == "Y" or bt == "Z" then
+            ADRouteBuilder.cycleConnection()
+        end
         return
     elseif sym == Input.KEY_KP_0 then
         local bt = ADRouteBuilder.params ~= nil and ADRouteBuilder.params.buildType or ""
@@ -3948,22 +4006,9 @@ function ADRouteBuilder:keyEvent(unicode, sym, modifier, isDown)
         end
         return
     end
-    if sym == Input.KEY_KP_1 and not ADRouteBuilder.shiftPressed then
+    if sym == Input.KEY_KP_1 then
         -- Num1: menu with all build types, choose directly with the number
         ADRouteBuilder.openTypeMenu(true)
-        return
-    end
-    if sym == Input.KEY_KP_1 then
-        -- LShift + Num1: cycle the build type
-        local order = ADRouteBuilder.BUILD_TYPES
-        local current = 1
-        for i, t in ipairs(order) do
-            if t == ADRouteBuilder.params.buildType then
-                current = i
-            end
-        end
-        local step = ADRouteBuilder.shiftPressed and -1 or 1
-        ADRouteBuilder.switchBuildType(order[(current - 1 + step) % #order + 1])
         return
     end
     if unicode == 104 or unicode == 72 then -- 'h' toggles the helper lines
@@ -4074,4 +4119,4 @@ PlayerInputComponent.registerGlobalPlayerActionEvents = Utils.overwrittenFunctio
     PlayerInputComponent.registerGlobalPlayerActionEvents, addPlayerActionEvents)
 
 addModEventListener(ADRouteBuilder)
-print("[AD Route Builder] loaded (v1.8.11.2)")
+print("[AD Route Builder] loaded (v1.8.12.2)")

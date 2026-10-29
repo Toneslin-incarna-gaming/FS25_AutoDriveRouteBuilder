@@ -78,13 +78,13 @@ local HELP = {
         K = {
             "Baut eine freie Kurve, beginnend an der Mausposition in Drehrichtung.",
             "LStrg + Mausrad = Radius (mit LUmschalt fein), LAlt + Mausrad = Punkte.",
-            "Num3 = Fahrtrichtung umdrehen, Num, = Verbindungsart wechseln.",
+            "Num, = Einbahn / beidseitig / rückwärts, LStrg + Num, (oder Num3) = Fahrtrichtung umdrehen, LAlt + Num, = Haupt- / Nebenstrecke.",
         },
         B = {
             "Baut einen Bogen, der die letzten zwei Hilfslinien berührt (Linie 1 orange, Linie 2 türkis).",
             "Vorher zwei Hilfslinien setzen (Bauart Hilfslinie / Kreuz).",
             "Die Maus wählt Ecke und Größe, LStrg + Mausrad = Radius, LAlt + Mausrad = Punkte.",
-            "Num3 = Fahrtrichtung umdrehen, Num, = Verbindungsart wechseln.",
+            "Num, = Einbahn / beidseitig / rückwärts, LStrg + Num, (oder Num3) = Fahrtrichtung umdrehen, LAlt + Num, = Haupt- / Nebenstrecke.",
         },
         L = {
             "Setzt eine Hilfslinie mit Querlinie zum Ausrichten. Nur du siehst sie, AutoDrive baut nichts.",
@@ -113,7 +113,7 @@ local HELP = {
             "Baut eine gerade Strecke genau auf einer Hilfslinie (vorher mit Bauart Hilfslinie setzen).",
             "1. Linksklick nahe der Hilfslinie = Start, 2. Linksklick = Ende; beide werden auf die Linie gesetzt.",
             "Die Punkte werden gleichmäßig verteilt, kein Abstand größer als 'max. Punktabstand'.",
-            "LAlt + Mausrad = Punktabstand, Num, = Verbindungsart, Num0 = Start verwerfen.",
+            "LAlt + Mausrad = Punktabstand, Num0 = Start verwerfen. Num, = Einbahn / beidseitig / rückwärts, LStrg + Num, = Fahrtrichtung umdrehen, LAlt + Num, = Haupt- / Nebenstrecke.",
             "Schnell hin und zurück: LAlt + Num1.",
         },
         M = {
@@ -148,13 +148,13 @@ local HELP = {
         K = {
             "Builds a free curve starting at the mouse position in the set direction.",
             "LCtrl + wheel = radius (LShift = fine), LAlt + wheel = points.",
-            "Num3 = swap driving direction, Num, = change connection type.",
+            "Num, = one-way / both ways / reverse, LCtrl + Num, (or Num3) = turn the driving direction, LAlt + Num, = main / sub route.",
         },
         B = {
             "Builds an arc touching the last two guide lines (line 1 orange, line 2 cyan).",
             "Set two guide lines first (type guide line / cross).",
             "The mouse chooses corner and size, LCtrl + wheel = radius, LAlt + wheel = points.",
-            "Num3 = swap driving direction, Num, = change connection type.",
+            "Num, = one-way / both ways / reverse, LCtrl + Num, (or Num3) = turn the driving direction, LAlt + Num, = main / sub route.",
         },
         L = {
             "Sets a guide line with a cross line for alignment. Only you see it, nothing is built.",
@@ -183,7 +183,7 @@ local HELP = {
             "Builds a straight line exactly on a guide line (set it first with type guide line).",
             "1st left click near the guide line = start, 2nd left click = end; both are put onto the line.",
             "The points are spread evenly, no spacing larger than 'max. point spacing'.",
-            "LAlt + wheel = point spacing, Num, = connection type, Num0 = discard start.",
+            "LAlt + wheel = point spacing, Num0 = discard start. Num, = one-way / both ways / reverse, LCtrl + Num, = turn the driving direction, LAlt + Num, = main / sub route.",
             "Quick there and back: LAlt + Num1.",
         },
         M = {

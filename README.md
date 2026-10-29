@@ -120,7 +120,7 @@ Im Spiel steht dasselbe im Panel links oben (Num- blendet es ein und aus).
 | Baukasten beenden | Ende |
 | Drehen | LUmschalt + Mausrad oder `,` / `.` |
 | Fein drehen | LUmschalt + LAlt + Mausrad (mit LStrg noch feiner) |
-| Fein verschieben | Num8 / Num2 / Num4 / Num6 |
+| Fein verschieben | Num8 / Num2 / Num4 / Num6 (mit LStrg 0,01 m) |
 | Position festhalten | Num5 |
 | An einen AD-Punkt setzen | Num0 |
 | Andere Bauart | Num1, dann Zahl oder Klick |
@@ -151,8 +151,9 @@ Im Spiel steht dasselbe im Panel links oben (Num- blendet es ein und aus).
 |---|---|
 | Kurve größer / kleiner | LStrg + Mausrad |
 | Mehr / weniger Punkte | LAlt + Mausrad |
-| Fahrtrichtung umdrehen | Num3 |
 | Einbahn / beidseitig / rückwärts | Num, |
+| Fahrtrichtung umdrehen | LStrg + Num, (oder Num3) |
+| Haupt- / Nebenstrecke | LAlt + Num, |
 | Bogen: Ecke und Größe wählen | Maus bewegen |
 
 ### 3. Hilfslinie
@@ -173,6 +174,9 @@ Im Spiel steht dasselbe im Panel links oben (Num- blendet es ein und aus).
 | Start setzen | erster Linksklick nahe der Hilfslinie |
 | Ende setzen und bauen | zweiter Linksklick |
 | Abstand der Punkte | LAlt + Mausrad |
+| Einbahn / beidseitig / rückwärts | Num, |
+| Fahrtrichtung umdrehen | LStrg + Num, |
+| Haupt- / Nebenstrecke | LAlt + Num, |
 | Start verwerfen | Num0 |
 
 ### 6. Verzweigung und 7. Zuführung
@@ -220,7 +224,7 @@ Bauart 8 (Auswählen / Verschieben), am besten in der Draufsicht:
 | Einen Punkt auswählen | Linksklick auf den Punkt |
 | Auswahl aufheben | Num0 |
 | Auswahl verschieben | ausgewählten Punkt mit der linken Maustaste ziehen |
-| Fein verschieben | Num8 / Num2 / Num4 / Num6 |
+| Fein verschieben | Num8 / Num2 / Num4 / Num6 (mit LStrg 0,01 m) |
 | Nur entlang / quer zur Hilfslinie schieben | Num3 |
 | Auswahl gerade auf die Hilfslinie legen | Num7 (Num9: dazu gleichmäßig verteilen) |
 | Einbahn / beidseitig / rückwärts | Num, |
@@ -247,6 +251,7 @@ Tipp: Bei einer langen Strecke reicht es, den ersten und den letzten Punkt zu w�
 - Neue Strecken werden nur dort mit dem AD-Netz verbunden, wo du Num0 benutzt. Den Rest verbindest du im AutoDrive-Editor.
 - Rückfahr-Bucht: Dort, wo das Rückwärtsfahren beginnt, darf keine andere Strecke abzweigen.
 - Deutsche Tastatur: Rückgängig geht mit LStrg + LAlt + Z oder Y.
+- Ziffernblock: LUmschalt zusammen mit Ziffernblock-Tasten vermeiden. Bei eingeschaltetem NumLock macht Windows daraus andere Tasten (z. B. Num, → Entf). Darum nutzt der Mod dafür LStrg.
 - Texte und Bilder gibt es auf Deutsch und Englisch.
 
 ## Unterstützen
@@ -258,6 +263,10 @@ Der Mod ist kostenlos. Wenn er dir Zeit spart und du etwas zurückgeben möchtes
 ## Fehler und Wünsche
 
 Bitte als [Issue](../../issues) melden – am besten mit Screenshot und der `log.txt`.
+
+## Lizenz
+
+Alle Rechte vorbehalten. Kostenlos im Spiel nutzen, auch auf Servern, ist erlaubt. Woanders hochladen, verkaufen oder geänderte Versionen veröffentlichen nur mit meiner Erlaubnis. Bitte verlinke stattdessen auf diese Seite. Details: [LICENSE](LICENSE)
 
 ## Ersteller
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="113">
     <author>Toneslin</author>
-    <version>1.8.11.2</version>
+    <version>1.8.12.2</version>
     <title>
         <en>AutoDrive Route Builder</en>
         <de>AutoDrive Strecken-Baukasten</de>
@@ -101,14 +101,14 @@ Die Anbindung an das bestehende Netz erfolgt von Hand im AutoDrive-Editor.]]></d
         <text name="adrb_help3"><en>LCtrl + wheel = radius (LCtrl + LShift = 0.1 m), LAlt + wheel = points, H = helper lines, hold middle mouse button or Num/ = look around</en><de>LStrg + Mausrad = Radius (LStrg + LUmschalt = 0,1 m), LAlt + Mausrad = Punkte, H = Hilfslinien, mittlere Maustaste halten oder Num/ = frei umsehen</de></text>
         <text name="adrb_liveCurve"><en>Curve: radius %s m, %d points</en><de>Kurve: Radius %s m, %d Punkte</de></text>
         <text name="adrb_liveBay"><en>Approach: radius %s m, %d points - Exit: radius %s m, %d points</en><de>Zufahrt: Radius %s m, %d Punkte - Abfahrt: Radius %s m, %d Punkte</de></text>
-        <text name="adrb_help4"><en>Fine: LShift + LAlt + wheel = turn 0.1 deg (+ LCtrl 0.01), Num8/2/4/6 = move 0.1 m (LShift 0.01), Num5 = lock position, Num0 = snap to AD point, Num3 = direction, Num, = connection type</en><de>Fein: LUmschalt + LAlt + Mausrad = fein drehen 0,1 Grad (+ LStrg 0,01), Num8/2/4/6 = verschieben 0,1 m (LUmschalt 0,01), Num5 = Position festhalten, Num0 = an AD-Punkt ausrichten, Num3 = Richtung, Num, = Verbindungsart</de></text>
+        <text name="adrb_help4"><en>Fine: LShift + LAlt + wheel = turn 0.1 deg (+ LCtrl 0.01), Num8/2/4/6 = move 0.1 m (LCtrl 0.01), Num5 = lock position, Num0 = snap to AD point, Num3 = direction, Num, = connection type</en><de>Fein: LUmschalt + LAlt + Mausrad = fein drehen 0,1 Grad (+ LStrg 0,01), Num8/2/4/6 = verschieben 0,1 m (LStrg 0,01), Num5 = Position festhalten, Num0 = an AD-Punkt ausrichten, Num3 = Richtung, Num, = Verbindungsart</de></text>
         <text name="adrb_liveAngle"><en>Angle %.2f deg</en><de>Winkel %.2f Grad</de></text>
         <text name="adrb_liveLocked"><en>position locked</en><de>Position fest</de></text>
         <text name="adrb_noSnap"><en>No AutoDrive point within 10 m</en><de>Kein AutoDrive-Punkt im Umkreis von 10 m</de></text>
         <text name="adrb_liveGuideAngle"><en>angle to last guide %.2f deg</en><de>Winkel zur letzten Hilfslinie %.2f Grad</de></text>
         <text name="adrb_liveArc"><en>Arc: radius %s m, tangent %s m, angle %.1f deg, %d points</en><de>Bogen: Radius %s m, Tangente %s m, Winkel %.1f Grad, %d Punkte</de></text>
-        <text name="adrb_arcDir12"><en>direction line 1 -> 2 (Num3 = swap)</en><de>Richtung Linie 1 -> 2 (Num3 = umdrehen)</de></text>
-        <text name="adrb_arcDir21"><en>direction line 2 -> 1 (Num3 = swap)</en><de>Richtung Linie 2 -> 1 (Num3 = umdrehen)</de></text>
+        <text name="adrb_arcDir12"><en>direction line 1 -> 2 (LCtrl + Num, = swap)</en><de>Richtung Linie 1 -> 2 (LStrg + Num, = umdrehen)</de></text>
+        <text name="adrb_arcDir21"><en>direction line 2 -> 1 (LCtrl + Num, = swap)</en><de>Richtung Linie 2 -> 1 (LStrg + Num, = umdrehen)</de></text>
         <text name="adrb_arcNeedGuides"><en>Arc: set two guide lines first (Build = L)</en><de>Bogen: zuerst zwei Hilfslinien setzen (Bauen = L)</de></text>
         <text name="adrb_arcParallel"><en>Arc: the two guide lines are parallel</en><de>Bogen: die beiden Hilfslinien sind parallel</de></text>
         <text name="adrb_arcTooSmall"><en>Arc: move the mouse further away from the intersection</en><de>Bogen: Maus weiter weg vom Schnittpunkt bewegen</de></text>
@@ -119,8 +119,10 @@ Die Anbindung an das bestehende Netz erfolgt von Hand im AutoDrive-Editor.]]></d
         <text name="adrb_conForward"><en>one-way (Num, = change)</en><de>Einbahn (Num, = wechseln)</de></text>
         <text name="adrb_conDual"><en>both ways (Num, = change)</en><de>beidseitig (Num, = wechseln)</de></text>
         <text name="adrb_conReverse"><en>reverse (Num, = change)</en><de>rückwärts (Num, = wechseln)</de></text>
-        <text name="adrb_curveDirFwd"><en>direction start -> end (Num3 = swap)</en><de>Richtung Start -> Ende (Num3 = umdrehen)</de></text>
-        <text name="adrb_curveDirBack"><en>direction end -> start (Num3 = swap)</en><de>Richtung Ende -> Start (Num3 = umdrehen)</de></text>
+        <text name="adrb_curveDirFwd"><en>direction start -> end (LCtrl + Num, = swap)</en><de>Richtung Start -> Ende (LStrg + Num, = umdrehen)</de></text>
+        <text name="adrb_mainRoute"><en>main route (LAlt + Num, = change)</en><de>Hauptstrecke (LAlt + Num, = wechseln)</de></text>
+        <text name="adrb_subRoute"><en>sub route (LAlt + Num, = change)</en><de>Nebenstrecke (LAlt + Num, = wechseln)</de></text>
+        <text name="adrb_curveDirBack"><en>direction end -> start (LCtrl + Num, = swap)</en><de>Richtung Ende -> Start (LStrg + Num, = umdrehen)</de></text>
         <text name="adrb_help2"><en>Num1 = change type (LShift = back) - left mouse button = build (stays active), short right click = edit AutoDrive, End = finish</en><de>Num1 = Bauart wechseln (LUmschalt = zurück) - linke Maustaste = bauen (bleibt aktiv), kurzer Rechtsklick = AutoDrive bearbeiten, Ende = beenden</de></text>
         <text name="adrb_built"><en>Route built: %d waypoints, %d targets</en><de>Strecke gebaut: %d Wegpunkte, %d Ziele</de></text>
         <text name="adrb_undone"><en>Last route removed</en><de>Letzte Strecke entfernt</de></text>
@@ -282,7 +284,7 @@ Die Anbindung an das bestehende Netz erfolgt von Hand im AutoDrive-Editor.]]></d
         <text name="adrb_conNone"><en>Select connected points first</en><de>Erst zusammenhängende Punkte auswählen</de></text>
         <text name="adrb_conFlipDual"><en>Both-way connections have no direction</en><de>Beidseitige Verbindungen haben keine Richtung</de></text>
         <text name="adrb_conFwd"><en>%d connections: one-way</en><de>%d Verbindungen: Einbahn</de></text>
-        <text name="adrb_conDual"><en>%d connections: both ways</en><de>%d Verbindungen: beidseitig</de></text>
+        <text name="adrb_selConDual"><en>%d connections: both ways</en><de>%d Verbindungen: beidseitig</de></text>
         <text name="adrb_conRev"><en>%d connections: reverse driving</en><de>%d Verbindungen: Rückwärtsfahrt</de></text>
         <text name="adrb_conFlipped"><en>%d connections: direction turned around</en><de>%d Verbindungen: Richtung umgedreht</de></text>
         <text name="adrb_conMain"><en>%d points: main route</en><de>%d Punkte: Hauptstrecke</de></text>

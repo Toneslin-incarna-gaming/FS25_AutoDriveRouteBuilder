@@ -120,7 +120,7 @@ In the game the same is shown in the panel at the top left (Num- shows / hides i
 | Close the builder | End |
 | Rotate | LShift + wheel or `,` / `.` |
 | Fine rotate | LShift + LAlt + wheel (with LCtrl even finer) |
-| Fine move | Num8 / Num2 / Num4 / Num6 |
+| Fine move | Num8 / Num2 / Num4 / Num6 (with LCtrl 0.01 m) |
 | Lock position | Num5 |
 | Put onto an AD point | Num0 |
 | Other build type | Num1, then number or click |
@@ -151,8 +151,9 @@ In the game the same is shown in the panel at the top left (Num- shows / hides i
 |---|---|
 | Curve bigger / smaller | LCtrl + wheel |
 | More / fewer points | LAlt + wheel |
-| Turn the driving direction | Num3 |
 | One-way / both ways / reverse | Num, |
+| Turn the driving direction | LCtrl + Num, (or Num3) |
+| Main / sub route | LAlt + Num, |
 | Arc: choose corner and size | move the mouse |
 
 ### 3. Guide line
@@ -173,6 +174,9 @@ In the game the same is shown in the panel at the top left (Num- shows / hides i
 | Set the start | first left click near the guide line |
 | Set the end and build | second left click |
 | Spacing of the points | LAlt + wheel |
+| One-way / both ways / reverse | Num, |
+| Turn the driving direction | LCtrl + Num, |
+| Main / sub route | LAlt + Num, |
 | Discard the start | Num0 |
 
 ### 6. Branch and 7. Merge
@@ -220,7 +224,7 @@ Build type 8 (select / move), best in the top view:
 | Select one point | left click on the point |
 | Clear the selection | Num0 |
 | Move the selection | drag a selected point with the left mouse button |
-| Fine move | Num8 / Num2 / Num4 / Num6 |
+| Fine move | Num8 / Num2 / Num4 / Num6 (with LCtrl 0.01 m) |
 | Move only along / across the guide line | Num3 |
 | Put the selection straight on the guide line | Num7 (Num9: and spread evenly) |
 | One-way / both ways / reverse | Num, |
@@ -247,6 +251,7 @@ Tip: for a long route it is enough to select the first and the last point. AD ta
 - New routes are only connected to the AD network where you use Num0. Connect the rest in the AutoDrive editor.
 - Reverse bay: no other route may branch off where reversing starts.
 - German keyboard: undo works with LCtrl + LAlt + Z or Y.
+- Numpad: avoid LShift together with numpad keys. With NumLock on, Windows turns them into other keys (e.g. Num. → Del). That is why the mod uses LCtrl there.
 - Texts and pictures in German and English.
 
 ## Support
@@ -258,6 +263,10 @@ The mod is free. If it saves you time and you want to give something back, I am 
 ## Bugs and wishes
 
 Please report them as an [issue](../../issues), ideally with a screenshot and the `log.txt`.
+
+## License
+
+All rights reserved. Using it for free in the game, also on servers, is allowed. Uploading it elsewhere, selling it or publishing changed versions only with my permission. Please link to this page instead. Details: [LICENSE](LICENSE)
 
 ## Author
 

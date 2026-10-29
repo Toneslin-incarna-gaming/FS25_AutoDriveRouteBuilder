@@ -433,7 +433,8 @@ function ADRouteBuilder.selectKeyEvent(sym)
         end
         return true
     elseif sym == Input.KEY_KP_8 or sym == Input.KEY_KP_2 or sym == Input.KEY_KP_4 or sym == Input.KEY_KP_6 then
-        local step = shift and 0.01 or 0.1
+        -- 0.01 m with LCtrl (LShift + numpad gives the arrow keys on Windows with NumLock on)
+        local step = (shift or ADRouteBuilder.ctrlPressed) and 0.01 or 0.1
         local guide = ADRouteBuilder.getMoveGuide()
         local rot = guide ~= nil and guide.rot or ADRouteBuilder.rotation
         local dirX, dirZ = math.sin(rot), math.cos(rot)
@@ -1268,7 +1269,7 @@ function ADRouteBuilder.changeSelectionConnection(flip)
             ADGraphManager:setConnectionBetween(e.from, e.to, CON_DIR[newKind])
         end
     end
-    local key = flip and "adrb_conFlipped" or ({fwd = "adrb_conFwd", dual = "adrb_conDual", rev = "adrb_conRev"})[newKind]
+    local key = flip and "adrb_conFlipped" or ({fwd = "adrb_conFwd", dual = "adrb_selConDual", rev = "adrb_conRev"})[newKind]
     g_currentMission:addIngameNotification(FSBaseMission.INGAME_NOTIFICATION_OK,
         string.format(getText(key, "%d connections changed"), #edges))
 end
