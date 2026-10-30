@@ -8,6 +8,12 @@
 
 Builds AutoDrive routes from settings and places them with the mouse – instead of setting every waypoint by hand. The points are created with AutoDrive's own functions and sent to everybody in multiplayer.
 
+## Video
+
+Part 1: reverse bay (in German) – click the picture to open the video on YouTube:
+
+[![Video: AutoDrive Route Builder part 1 – reverse bay](https://img.youtube.com/vi/RU473sKUrjU/hqdefault.jpg)](https://youtu.be/RU473sKUrjU)
+
 ## What it looks like
 
 Put bays into a bunker silo automatically – mouse into the silo, Num9, done:
@@ -38,6 +44,7 @@ Approach along a guide line – the radius stays, the point where it joins the b
 - [Guide lines](#guide-lines)
 - [Along guide lines](#along-guide-lines)
 - [Editing AutoDrive points](#editing-autodrive-points)
+- [Showing obstacles](#showing-obstacles)
 - [Top view and editing AutoDrive](#top-view-and-editing-autodrive)
 - [Good to know](#good-to-know)
 - [Support](#support)
@@ -108,9 +115,17 @@ Select existing AD points with a box, move, copy, delete them.
 
 <img src="docs/images/connections_en.png" width="100%" alt="Select / move">
 
+### 9. Vehicle gauge
+
+A rough model of a truck (vehicle + trailer or semi-trailer) to check if there is enough room. Nothing is built. With the mouse near an AD route the front stands on it in driving direction and the trailer follows the route backwards, also through curves. Green = fits, red = touches an obstacle. The side that touches (left, right, front or rear) is also filled bright red.
+
+### 10. Field border
+
+Builds a route around a field, as the field is now. Unlike AutoDrive's "generate field points" (which takes the field outline stored in the map), the mod scans the real field area. Fields plowed together, made bigger or smaller are therefore found correctly. In the build type menu it is the key 0.
+
 ## Keys while placing
 
-In the game the same is shown in the panel at the top left (Num- shows / hides it).
+In the game there are two windows: the current values at the top, the keys of the build type on the left. Both can be dragged with the mouse, the position is saved. Num- shows all keys, Num- again hides the help. LCtrl + Num- hides / shows the values.
 
 ### All build types
 
@@ -132,7 +147,11 @@ In the game the same is shown in the panel at the top left (Num- shows / hides i
 | Edit with AutoDrive yourself | short right click or Num Enter |
 | Undo the last route | LCtrl + LAlt + Z |
 | Settings of the build type | LCtrl + LAlt + B |
-| Help / helper circles on / off | Num- / H |
+| Help short / all keys / off | Num- (press several times) |
+| Helper circles on / off | H |
+| Show the real obstacles | LCtrl + H |
+| Value window on / off | LCtrl + Num- |
+| Move a window | drag it with the left mouse button (the position is saved) |
 
 ### 1. Reverse bay
 
@@ -140,6 +159,10 @@ In the game the same is shown in the panel at the top left (Num- shows / hides i
 |---|---|
 | Curves bigger / smaller | LCtrl + wheel |
 | More / fewer points in the curves | LAlt + wheel |
+| Change only the approach or only the exit | mouse on the curve (turns white), then wheel as above |
+| Leave out the approach or exit for this bay only | mouse on the curve, Del |
+| Always leave out the approach or exit | settings: approach / exit side = none |
+| Bring back a removed approach / exit | LShift + Del |
 | Put the bays into a bunker silo | mouse into the silo (near the entrance), then Num9 |
 | Mouse at the first bay / in the middle | Num3 |
 | Approach or exit along a guide line | LCtrl + left click on the curve, then on the line |
@@ -151,9 +174,8 @@ In the game the same is shown in the panel at the top left (Num- shows / hides i
 |---|---|
 | Curve bigger / smaller | LCtrl + wheel |
 | More / fewer points | LAlt + wheel |
-| One-way / both ways / reverse | Num, |
-| Turn the driving direction | LCtrl + Num, (or Num3) |
-| Main / sub route | LAlt + Num, |
+| Direction: forward / turned / both ways | LCtrl + Num, (or Num,) |
+| Main / sub / reverse route | LAlt + Num, |
 | Arc: choose corner and size | move the mouse |
 
 ### 3. Guide line
@@ -174,9 +196,8 @@ In the game the same is shown in the panel at the top left (Num- shows / hides i
 | Set the start | first left click near the guide line |
 | Set the end and build | second left click |
 | Spacing of the points | LAlt + wheel |
-| One-way / both ways / reverse | Num, |
-| Turn the driving direction | LCtrl + Num, |
-| Main / sub route | LAlt + Num, |
+| Direction: forward / turned / both ways | LCtrl + Num, (or Num,) |
+| Main / sub / reverse route | LAlt + Num, |
 | Discard the start | Num0 |
 
 ### 6. Branch and 7. Merge
@@ -189,6 +210,39 @@ In the game the same is shown in the panel at the top left (Num- shows / hides i
 | Connect to an AD point | Num0 |
 | Branch along a guide line | LCtrl + left click on the branch, then on the line |
 | Leave out a branch / bring it back | LAlt + left click on the side |
+
+### 9. Vehicle gauge
+
+| What you want to do | How |
+|---|---|
+| Put the model onto the AD network | mouse near a route |
+| Turn it to the other direction | Num3 |
+| Length of the vehicle | LCtrl + wheel |
+| Length of the trailer (0 = none) | LAlt + wheel |
+| Width, height, coupling | in the settings dialog (LCtrl + LAlt + B) |
+| Leave the model standing (to compare) | left click |
+| Remove the models left standing | Num0 |
+
+Examples: semi-trailer truck 6 m + 13.6 m, coupling 1.5 m in front of the rear, width 2.55 m. Tractor with trailer 6 m + 10 m, coupling -1 (1 m behind the rear). The model is rough on purpose: box shapes, the trailer follows the route approximately.
+
+### 10. Field border
+
+| What you want to do | How |
+|---|---|
+| Find the field | left click onto the field, wait a moment |
+| Build the field border | left click again |
+| Discard | Num0 |
+| Entry / exit | LCtrl + left click on the start, then on the end: an AD point of the road, the found border or an already built border. The order is the driving direction |
+| Build only entries / exits (border exists already) | without finding the field: set the entries / exits, then left click |
+| Remove the last entry / exit | LCtrl + Num0 |
+| Move the border outwards / inwards | LAlt + wheel (+ = outside, - = inside). Every new LAlt press changes the step: 1 m → 0.5 m → 0.1 m → 0.01 m |
+| Curve radius: only the corner at the mouse (marked yellow), else all corners (default 10 m) | LCtrl + wheel |
+| Points: in the arc at the mouse, else point spacing on the straight parts | LCtrl + LShift + wheel |
+| Corner back to the general values | Del (mouse at the corner) |
+| Direction: forward / turned / both ways | LCtrl + Num, (or Num,) |
+| Main / sub / reverse route | LAlt + Num, |
+
+The corners are rounded with the set curve radius. If an edge is too short for it, the radius gets smaller there and the value window shows the tightest curve. In the settings dialog: offset, point spacing, curve radius, grid (smaller = more exact but slower, default 2 m) and the biggest area (default 100 ha), so that not a whole meadow is scanned. Fields separated only by a strip of grass stay separate. Entries and exits are smooth curves: at the road in its driving direction, at the border along the border. They are built together with the border.
 
 ## Guide lines
 
@@ -222,14 +276,14 @@ Build type 8 (select / move), best in the top view:
 | Select points | hold the left mouse button and drag a box |
 | Add points / deselect points | box with LShift / with LCtrl |
 | Select one point | left click on the point |
+| Add all connected points | LCtrl + A (at most the number set in the settings dialog, default 500) |
 | Clear the selection | Num0 |
 | Move the selection | drag a selected point with the left mouse button |
 | Fine move | Num8 / Num2 / Num4 / Num6 (with LCtrl 0.01 m) |
 | Move only along / across the guide line | Num3 |
 | Put the selection straight on the guide line | Num7 (Num9: and spread evenly) |
-| One-way / both ways / reverse | Num, |
-| Turn the driving direction | LCtrl + Num, |
-| Main / sub route | LAlt + Num, |
+| Direction: forward / turned / both ways | LCtrl + Num, (or Num,) |
+| Main / sub / reverse route | LAlt + Num, |
 | Change the points of a curve | select the curve, LAlt + wheel, then left click |
 | Straight line between two points | select 2 points, Num/, then left click |
 | Set / rename / delete an AD target | select 1 point, Num5 |
@@ -239,6 +293,14 @@ Build type 8 (select / move), best in the top view:
 
 Tip: for a long route it is enough to select the first and the last point. AD targets are not copied.
 
+## Showing obstacles
+
+LCtrl + H shows around the mouse (25 m) where something is really in the way. Red is the invisible collision of trees, poles, buildings and objects, not the visible model. The mod checks this the same way AutoDrive does while driving.
+
+- Red areas with a yellow border: a collision is here (from 0.3 m to 4 m above the ground). Drawn just above the ground and at 4 m height, plus a red post. Under tree crowns it is best seen with a tilted camera (Space + mouse).
+- Red line above the preview: a 3 m wide vehicle would touch something on this section. The value window shows how many sections are affected.
+- LCtrl + H again switches it off.
+
 ## Top view and editing AutoDrive
 
 - The builder starts in the top view above you or your vehicle.
@@ -247,7 +309,7 @@ Tip: for a long route it is enough to select the first and the last point. AD ta
 
 ## Good to know
 
-- Multiplayer: the mod has to be on the server **and** on all players in the same version.
+- Multiplayer: the mod has to be on the server **and** on all players in the same version. Undo only takes back routes you built yourself.
 - New routes are only connected to the AD network where you use Num0. Connect the rest in the AutoDrive editor.
 - Reverse bay: no other route may branch off where reversing starts.
 - German keyboard: undo works with LCtrl + LAlt + Z or Y.
